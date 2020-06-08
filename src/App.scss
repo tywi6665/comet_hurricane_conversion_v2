@@ -1,0 +1,23 @@
+$primary-color: #b9c6fb;
+
+body {
+    background: radial-gradient(ellipse at center, #7d7e7d 0%, #0e0e0e 100%) fixed;
+}
+
+.container {
+    background: #fff;
+    height: 100%;
+    margin: 50px;
+    padding: 15px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+
+    .subContainer {
+        text-align: center;
+
+        h1 {
+            color: $primary-color;
+            text-shadow: 2px 2px #000000;
+        }
+    }
+}

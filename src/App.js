@@ -7,7 +7,7 @@ import './App.scss';
 
 function App() {
 
-  const { isShowing, toggle } = useModal();
+  const { isShowing, toggle, modalData } = useModal();
 
   return (
     <Container>
@@ -20,15 +20,12 @@ function App() {
         Stuff
       </SubContainer>
       <SubContainer>
-        <button className="button-default directions-button" onClick={toggle}>How to Aim a Hurricane</button>
+        <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
+        <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
         <Modal
           isShowing={isShowing}
-          hide={toggle}
-        />
-        <button className="button-default credit-button" onClick={toggle}>Credits</button>
-        <Modal
-          isShowing={isShowing}
-          hide={toggle}
+          hide={e => toggle(e)}
+          modalData={modalData}
         />
       </SubContainer>
     </Container>

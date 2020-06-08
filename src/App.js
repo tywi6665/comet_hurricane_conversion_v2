@@ -20,7 +20,12 @@ function App() {
         Stuff
       </SubContainer>
       <SubContainer>
-        <button className="button-default" onClick={toggle}>Show Modal</button>
+        <button className="button-default directions-button" onClick={toggle}>How to Aim a Hurricane</button>
+        <Modal
+          isShowing={isShowing}
+          hide={toggle}
+        />
+        <button className="button-default credit-button" onClick={toggle}>Credits</button>
         <Modal
           isShowing={isShowing}
           hide={toggle}

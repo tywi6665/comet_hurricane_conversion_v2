@@ -21,6 +21,20 @@ body {
         }
 
 
+
+        .button-default {
+            width: auto;
+            color: $primary-color;
+            text-decoration: underline;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            margin: 15px auto;
+        }
     }
 }
 

@@ -8,52 +8,53 @@ const DndWrapper = () => {
 
     const [dragData, setDragData] = useState([
         {
-            title: "draggables",
+            title: "dnd-draggables-container",
             items: ["L", "H", "Hurricane"]
+        },
+        {
+            title: "dnd-target dnd-target-low-1",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-low-2",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-low-3",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-low-4",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-high-1",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-high-2",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-high-3",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-high-4",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-hurricane-1",
+            items: []
+        },
+        {
+            title: "dnd-target dnd-target-hurricane-2",
+            items: []
         }
     ]);
 
     const [targetData, setTargetData] = useState([
-        {
-            title: "low-1",
-            items: ""
-        },
-        {
-            title: "low-2",
-            items: ""
-        },
-        {
-            title: "low-3",
-            items: ""
-        },
-        {
-            title: "low-4",
-            items: ""
-        },
-        {
-            title: "high-1",
-            items: ""
-        },
-        {
-            title: "high-2",
-            items: ""
-        },
-        {
-            title: "high-3",
-            items: ""
-        },
-        {
-            title: "high-4",
-            items: ""
-        },
-        {
-            title: "hurricane-1",
-            items: ""
-        },
-        {
-            title: "hurricane-2",
-            items: ""
-        }
+
     ]);
 
     const getStyles = (params) => {
@@ -76,6 +77,7 @@ const DndWrapper = () => {
 
     const handleDragEnter = (e, params) => {
         console.log("Entering drag...", params)
+        const currentItem = dragItem.current;
     }
 
     const handleDragEnd = () => {
@@ -93,7 +95,11 @@ const DndWrapper = () => {
             </div>
             <div className="drag-n-drop">
                 {dragData.map((grp, grpI) => (
-                    <div className="dnd-group dnd-draggables-container" key={grp.title}>
+                    <div
+                        className={`dnd-group ${grp.title}`}
+                        key={grp.grpI}
+                        onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
+                    >
                         {grp.items.map((item, itemI) => (
                             <div
                                 draggable
@@ -109,14 +115,14 @@ const DndWrapper = () => {
                         ))}
                     </div>
                 ))}
-                {targetData.map((grp, grpI) => (
+                {/* {targetData.map((grp, grpI) => (
                     <div
                         className={`dnd-group dnd-target dnd-target-${grp.title}`}
                         key={grpI}
                         onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
                     >
                     </div>
-                ))}
+                ))} */}
             </div>
         </div>
     );

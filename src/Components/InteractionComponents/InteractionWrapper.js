@@ -1,49 +1,39 @@
 import React from 'react';
 
 const InteractionWrapper = () => {
+
+    const dragData = [
+        {
+            title: "draggables",
+            items: ["L", "H", "Hurricane"]
+        }
+    ]
+
+    const targetData = [
+        "low-1", "low-2", "low-3", "low-4", "high-1", "high-2", "high-3", "high-4", "hurricane-1", "hurricane-2",
+    ]
+
     return (
         <div className="interaction-wrapper">
             <div className="img-wrapper">
                 <img src="./graphics/sample.jpg" alt="" />
             </div>
             <div className="drag-n-drop">
-                <div className="dnd-group dnd-draggables-container">
-                    <div className="dnd-item">
-                        <div>
-                            <p>ITEM L</p>
-                        </div>
+                {dragData.map((grp) => (
+                    <div className="dnd-group dnd-draggables-container" key={grp.title}>
+                        {grp.items.map((item, i) => (
+                            <div draggable className="dnd-item" key={i}>
+                                <div>
+                                    <p>{item}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="dnd-item">
-                        <div>
-                            <p>ITEM H</p>
-                        </div>
+                ))}
+                {targetData.map((data, i) => (
+                    <div className={`dnd-group dnd-target dnd-target-${data}`} key={i}>
                     </div>
-                    <div className="dnd-item">
-                        <div>
-                            <p>ITEM 3</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="dnd-group dnd-target dnd-target-low-1">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-low-2">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-low-3">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-low-4">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-high-1">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-high-2">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-high-3">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-high-4">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-hurricane-1">
-                </div>
-                <div className="dnd-group dnd-target dnd-target-hurricane-2">
-                </div>
+                ))}
             </div>
         </div>
     );

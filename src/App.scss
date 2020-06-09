@@ -50,10 +50,22 @@ body {
                         border-radius: 5px;
                     }  
 
-                    .active {
+                    .active-item {
                         visibility: hidden;
                     }
                 } 
+
+                .active[data-value="low"] {
+                    border: 2px red solid;
+                }
+
+                .active[data-value="high"] {
+                    border: 2px blue solid;
+                }
+
+                .active[data-value="hurricane"] {
+                    border: 2px green solid;
+                }
                 
                 .dnd-target {
                     position: absolute;

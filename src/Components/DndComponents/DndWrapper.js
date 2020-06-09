@@ -9,56 +9,75 @@ const DndWrapper = () => {
     const [dragData, setDragData] = useState([
         {
             title: "dnd-draggables-container",
-            items: ["L", "H", "Hurricane"]
+            items: [["L", "low"], ["H", "high"], ["Hurricane", "hurricane"]],
+            accepts: ""
         },
         {
             title: "dnd-target dnd-target-low-1",
-            items: []
+            items: [],
+            accepts: "low"
         },
         {
             title: "dnd-target dnd-target-low-2",
-            items: []
+            items: [],
+            accepts: "low"
         },
         {
             title: "dnd-target dnd-target-low-3",
-            items: []
+            items: [],
+            accepts: "low"
         },
         {
             title: "dnd-target dnd-target-low-4",
-            items: []
+            items: [],
+            accepts: "low"
         },
         {
             title: "dnd-target dnd-target-high-1",
-            items: []
+            items: [],
+            accepts: "high"
         },
         {
             title: "dnd-target dnd-target-high-2",
-            items: []
+            items: [],
+            accepts: "high"
         },
         {
             title: "dnd-target dnd-target-high-3",
-            items: []
+            items: [],
+            accepts: "high"
         },
         {
             title: "dnd-target dnd-target-high-4",
-            items: []
+            items: [],
+            accepts: "high"
         },
         {
             title: "dnd-target dnd-target-hurricane-1",
-            items: []
+            items: [],
+            accepts: "hurricane"
         },
         {
             title: "dnd-target dnd-target-hurricane-2",
-            items: []
+            items: [],
+            accepts: "hurricane"
         }
     ]);
 
-    const getStyles = (params) => {
+    const getItemStyles = (params) => {
         const currentItem = dragItem.current;
         if (currentItem.grpI === params.grpI && currentItem.itemI === params.itemI) {
-            return "active dnd-item"
+            return "active-item dnd-item"
         }
         return "dnd-item"
+    }
+
+    const getTargetStyles = (dragTargets) => {
+        document.querySelectorAll(".active").forEach(e =>
+            e.classList.remove("active"));
+        dragTargets.forEach(target => {
+            target.classList.add("active")
+        });
     }
 
     const handleDragStart = (e, params) => {
@@ -69,6 +88,8 @@ const DndWrapper = () => {
         setTimeout(() => {
             setDragging(true)
         }, 0);
+        let targets = document.querySelectorAll(`.dnd-target[data-value=${dragNode.current.getAttribute("data")}]`);
+        getTargetStyles(targets);
     }
 
     const handleDragEnter = (e, params) => {
@@ -102,18 +123,20 @@ const DndWrapper = () => {
                     <div
                         className={`dnd-group ${grp.title}`}
                         key={grp.title}
+                        data-value={grp.accepts}
                         onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
                     >
                         {grp.items.map((item, itemI) => (
                             <div
                                 draggable
-                                className={dragging ? getStyles({ grpI, itemI }) : "dnd-item"}
+                                className={dragging ? getItemStyles({ grpI, itemI }) : "dnd-item"}
                                 key={itemI}
+                                data={item[1]}
                                 onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
                                 onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
                             >
                                 <div>
-                                    <p>{item}</p>
+                                    <p>{item[0]}</p>
                                 </div>
                             </div>
                         ))}

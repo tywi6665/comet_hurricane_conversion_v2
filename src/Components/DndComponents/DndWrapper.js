@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 const DndWrapper = () => {
+
+    const dragItem = useRef();
 
     const dragData = [
         {
@@ -13,8 +15,9 @@ const DndWrapper = () => {
         "low-1", "low-2", "low-3", "low-4", "high-1", "high-2", "high-3", "high-4", "hurricane-1", "hurricane-2",
     ]
 
-    const handleDragStart = (e) => {
-        console.log("drag starting...")
+    const handleDragStart = (e, params) => {
+        console.log("drag starting...", params)
+        dragItem.current = params;
     }
 
     return (
@@ -23,14 +26,14 @@ const DndWrapper = () => {
                 <img src="./graphics/sample.jpg" alt="" />
             </div>
             <div className="drag-n-drop">
-                {dragData.map((grp) => (
+                {dragData.map((grp, grpI) => (
                     <div className="dnd-group dnd-draggables-container" key={grp.title}>
-                        {grp.items.map((item, i) => (
+                        {grp.items.map((item, itemI) => (
                             <div
                                 draggable
                                 className="dnd-item"
-                                key={i}
-                                onDragStart={handleDragStart}
+                                key={itemI}
+                                onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
                             >
                                 <div>
                                     <p>{item}</p>

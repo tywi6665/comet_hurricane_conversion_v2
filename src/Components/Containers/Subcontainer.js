@@ -2,7 +2,7 @@ import React from 'react';
 
 const SubContainer = ({ children }) => {
     return (
-        <div className="subContainer">
+        <div className="sub-container">
             {children}
         </div>
     );

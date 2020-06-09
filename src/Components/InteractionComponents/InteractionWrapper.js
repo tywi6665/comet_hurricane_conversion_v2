@@ -10,7 +10,17 @@ const InteractionWrapper = () => {
                 <div className="dnd-group">
                     <div className="dnd-item">
                         <div>
-                            <p>Item</p>
+                            <p>ITEM 1</p>
+                        </div>
+                    </div>
+                    <div className="dnd-item">
+                        <div>
+                            <p>ITEM 2</p>
+                        </div>
+                    </div>
+                    <div className="dnd-item">
+                        <div>
+                            <p>ITEM 3</p>
                         </div>
                     </div>
                 </div>

@@ -53,10 +53,6 @@ const DndWrapper = () => {
         }
     ]);
 
-    const [targetData, setTargetData] = useState([
-
-    ]);
-
     const getStyles = (params) => {
         const currentItem = dragItem.current;
         if (currentItem.grpI === params.grpI && currentItem.itemI === params.itemI) {
@@ -78,6 +74,14 @@ const DndWrapper = () => {
     const handleDragEnter = (e, params) => {
         console.log("Entering drag...", params)
         const currentItem = dragItem.current;
+        if (e.target !== dragNode.current) {
+            setDragData(oldDragData => {
+                let newDragData = JSON.parse(JSON.stringify(oldDragData));
+                newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
+                dragItem.current = params;
+                return newDragData;
+            })
+        }
     }
 
     const handleDragEnd = () => {
@@ -97,7 +101,7 @@ const DndWrapper = () => {
                 {dragData.map((grp, grpI) => (
                     <div
                         className={`dnd-group ${grp.title}`}
-                        key={grp.grpI}
+                        key={grp.title}
                         onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
                     >
                         {grp.items.map((item, itemI) => (

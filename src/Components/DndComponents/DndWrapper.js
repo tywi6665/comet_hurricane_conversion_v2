@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InteractionWrapper = () => {
+const DndWrapper = () => {
 
     const dragData = [
         {
@@ -13,6 +13,10 @@ const InteractionWrapper = () => {
         "low-1", "low-2", "low-3", "low-4", "high-1", "high-2", "high-3", "high-4", "hurricane-1", "hurricane-2",
     ]
 
+    const handleDragStart = (e) => {
+        console.log("drag starting...")
+    }
+
     return (
         <div className="interaction-wrapper">
             <div className="img-wrapper">
@@ -22,7 +26,12 @@ const InteractionWrapper = () => {
                 {dragData.map((grp) => (
                     <div className="dnd-group dnd-draggables-container" key={grp.title}>
                         {grp.items.map((item, i) => (
-                            <div draggable className="dnd-item" key={i}>
+                            <div
+                                draggable
+                                className="dnd-item"
+                                key={i}
+                                onDragStart={handleDragStart}
+                            >
                                 <div>
                                     <p>{item}</p>
                                 </div>
@@ -39,4 +48,4 @@ const InteractionWrapper = () => {
     );
 }
 
-export default InteractionWrapper;
+export default DndWrapper;

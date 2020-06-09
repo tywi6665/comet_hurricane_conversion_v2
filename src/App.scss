@@ -25,24 +25,84 @@ body {
             border: 1px solid #000000;
             border-radius: 5px;
             padding: 15px;
+            position: relative;
 
             .drag-n-drop {
-                width: fit-content;
-                padding: 15px;
-                text-align: left;
-                border: 1px solid #000000;
-                border-radius: 5px;
-
+                width: fit-content;     
+                
                 .dnd-group {
+                    border: 1px solid #000000;
+                    border-radius: 5px;                   
+                }
+
+                .dnd-draggables-container {
                     display: flex;
                     justify-content: space-evenly;
+                    padding: 15px;
+                    text-align: left;                   
 
                     .dnd-item {
                         margin: 5px;
                         padding: 5px;
                         border: 1px solid #000000;
                         border-radius: 5px;
-                    }                    
+                    }  
+                } 
+                
+                .dnd-target {
+                    position: absolute;
+                    width: 70px;
+                    height: 70px;
+
+                    &-low-1 {
+                        top: 165px;
+                        left: 192px;
+                    }
+
+                    &-low-2 {
+                        top: 255px;
+                        left: 192px;
+                    }
+
+                    &-low-3 {
+                        top: 165px;
+                        left: 324px;
+                    }
+
+                    &-low-4 {
+                        top: 255px;
+                        left: 324px;
+                    }
+
+                    &-high-1 {
+                        top: 205px;
+                        left: 455px;
+                    }
+
+                    &-high-2 {
+                        top: 295px;
+                        left: 455px;
+                    }
+
+                    &-high-3 {
+                        top: 205px;
+                        left: 542px;
+                    }
+
+                    &-high-4 {
+                        top: 295px;
+                        left: 542px;
+                    }
+
+                    &-hurricane-1 {
+                        bottom: 433px;
+                        right: 178px;
+                    }
+
+                    &-hurricane-2 {
+                        bottom: 362px;
+                        right: 178px;
+                    }
                 }
             }
         }

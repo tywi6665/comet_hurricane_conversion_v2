@@ -6,16 +6,55 @@ const DndWrapper = () => {
     const dragItem = useRef();
     const dragNode = useRef();
 
-    const dragData = [
+    const [dragData, setDragData] = useState([
         {
             title: "draggables",
             items: ["L", "H", "Hurricane"]
         }
-    ]
+    ]);
 
-    const targetData = [
-        "low-1", "low-2", "low-3", "low-4", "high-1", "high-2", "high-3", "high-4", "hurricane-1", "hurricane-2",
-    ]
+    const [targetData, setTargetData] = useState([
+        {
+            title: "low-1",
+            items: ""
+        },
+        {
+            title: "low-2",
+            items: ""
+        },
+        {
+            title: "low-3",
+            items: ""
+        },
+        {
+            title: "low-4",
+            items: ""
+        },
+        {
+            title: "high-1",
+            items: ""
+        },
+        {
+            title: "high-2",
+            items: ""
+        },
+        {
+            title: "high-3",
+            items: ""
+        },
+        {
+            title: "high-4",
+            items: ""
+        },
+        {
+            title: "hurricane-1",
+            items: ""
+        },
+        {
+            title: "hurricane-2",
+            items: ""
+        }
+    ]);
 
     const getStyles = (params) => {
         const currentItem = dragItem.current;
@@ -30,7 +69,13 @@ const DndWrapper = () => {
         dragItem.current = params;
         dragNode.current = e.target;
         dragNode.current.addEventListener("dragend", handleDragEnd)
-        setDragging(true)
+        setTimeout(() => {
+            setDragging(true)
+        }, 0);
+    }
+
+    const handleDragEnter = (e, params) => {
+        console.log("Entering drag...", params)
     }
 
     const handleDragEnd = () => {
@@ -55,6 +100,7 @@ const DndWrapper = () => {
                                 className={dragging ? getStyles({ grpI, itemI }) : "dnd-item"}
                                 key={itemI}
                                 onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
+                                onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
                             >
                                 <div>
                                     <p>{item}</p>
@@ -63,8 +109,12 @@ const DndWrapper = () => {
                         ))}
                     </div>
                 ))}
-                {targetData.map((data, i) => (
-                    <div className={`dnd-group dnd-target dnd-target-${data}`} key={i}>
+                {targetData.map((grp, grpI) => (
+                    <div
+                        className={`dnd-group dnd-target dnd-target-${grp.title}`}
+                        key={grpI}
+                        onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
+                    >
                     </div>
                 ))}
             </div>

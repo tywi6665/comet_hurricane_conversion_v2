@@ -72,11 +72,9 @@ const DndWrapper = () => {
         return "dnd-item"
     }
 
-    const getTargetStyles = (dragTargets) => {
-        document.querySelectorAll(".active").forEach(e =>
-            e.classList.remove("active"));
-        dragTargets.forEach(target => {
-            target.classList.add("active")
+    const getTargetStyles = (params) => {
+        params.forEach(param => {
+            param.classList.add("active")
         });
     }
 
@@ -88,6 +86,8 @@ const DndWrapper = () => {
         setTimeout(() => {
             setDragging(true)
         }, 0);
+        document.querySelectorAll(".active").forEach(e =>
+            e.classList.remove("active"));
         let targets = document.querySelectorAll(`.dnd-target[data-value=${dragNode.current.getAttribute("data")}]`);
         getTargetStyles(targets);
     }
@@ -107,6 +107,8 @@ const DndWrapper = () => {
 
     const handleDragEnd = () => {
         console.log("Ending drag...")
+        document.querySelectorAll(".active").forEach(e =>
+            e.classList.remove("active"));
         setDragging(false)
         dragNode.current.removeEventListener("dragend", handleDragEnd)
         dragItem.current = null;

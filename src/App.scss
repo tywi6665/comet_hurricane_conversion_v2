@@ -47,6 +47,11 @@ body {
                         border: 1px solid #000000;
                         border-radius: 5px;
                     }  
+
+                    .active {
+                        background: lightblue;
+                        opacity: 0.5;
+                    }
                 } 
                 
                 .dnd-target {

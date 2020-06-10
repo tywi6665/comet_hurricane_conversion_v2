@@ -212,25 +212,29 @@ const DndWrapper = () => {
                 ))} */}
                 </div>
             </SubContainer>
-            <SubContainer classes="">
-                <Button
-                    type={"submit"}
-                    handleClick={handleSubmit}
-                    text={"Submit"}
-                    active={dropData}
-                />
-                <Button
-                    type={"reset"}
-                    handleClick={handleReset}
-                    text={"Reset"}
-                />
-                <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
-                <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
-                <Modal
-                    isShowing={isShowing}
-                    hide={e => toggle(e)}
-                    modalData={modalData}
-                />
+            <SubContainer classes="info-box">
+                <div>
+                    <Button
+                        type={"submit"}
+                        handleClick={handleSubmit}
+                        text={"Submit"}
+                        active={dropData}
+                    />
+                    <Button
+                        type={"reset"}
+                        handleClick={handleReset}
+                        text={"Reset"}
+                    />
+                </div>
+                <div>
+                    <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
+                    <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
+                    <Modal
+                        isShowing={isShowing}
+                        hide={e => toggle(e)}
+                        modalData={modalData}
+                    />
+                </div>
             </SubContainer>
         </div >
     );

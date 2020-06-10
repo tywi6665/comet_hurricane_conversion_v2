@@ -41,13 +41,23 @@ body {
                     display: flex;
                     justify-content: space-evenly;
                     padding: 15px;
-                    text-align: left;                   
+                    text-align: left;   
 
                     .dnd-item {
                         margin: 5px;
                         padding: 5px;
                         border: 1px solid #000000;
                         border-radius: 5px;
+                        cursor: move; /* fallback if grab cursor is unsupported */
+                        cursor: grab;
+                        cursor: -moz-grab;
+                        cursor: -webkit-grab;
+
+                        &:active {
+                            cursor: grabbing;
+                            cursor: -moz-grabbing;
+                            cursor: -webkit-grabbing;
+                        }
                     }  
 
                     .active-item {

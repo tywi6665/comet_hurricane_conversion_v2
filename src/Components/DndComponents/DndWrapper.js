@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Button from "./Button";
 
 const DndWrapper = () => {
 
@@ -10,7 +11,7 @@ const DndWrapper = () => {
         {
             title: "dnd-draggables-container",
             items: [["L", "low"], ["H", "high"], ["Hurricane", "hurricane"]],
-            accepts: ""
+            accepts: "All"
         },
         {
             title: "dnd-target dnd-target-low-1",
@@ -95,14 +96,15 @@ const DndWrapper = () => {
     const handleDragEnter = (e, params) => {
         console.log("Entering drag...", params)
         const currentItem = dragItem.current;
-        if (e.target.getAttribute("data-value") === dragNode.current.getAttribute("data")) {
-            setDragData(oldDragData => {
-                let newDragData = JSON.parse(JSON.stringify(oldDragData));
-                newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
-                dragItem.current = params;
-                return newDragData;
-            })
-        }
+        if (dragNode.current)
+            if ((e.target.getAttribute("data-value") === dragNode.current.getAttribute("data")) || (e.target.getAttribute("data-value") === "All")) {
+                setDragData(oldDragData => {
+                    let newDragData = JSON.parse(JSON.stringify(oldDragData));
+                    newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
+                    dragItem.current = params;
+                    return newDragData;
+                })
+            }
         // if (e.target !== dragNode.current) {
         //     setDragData(oldDragData => {
         //         let newDragData = JSON.parse(JSON.stringify(oldDragData));
@@ -121,6 +123,14 @@ const DndWrapper = () => {
         dragNode.current.removeEventListener("dragend", handleDragEnd)
         dragItem.current = null;
         dragNode.current = null;
+    }
+
+    const handleSubmit = (e) => {
+        console.log("submit")
+    }
+
+    const handleReset = (e) => {
+        console.log("reset")
     }
 
     return (
@@ -161,6 +171,16 @@ const DndWrapper = () => {
                     </div>
                 ))} */}
             </div>
+            <Button
+                type={"submit"}
+                handleClick={handleSubmit}
+                text={"Submit"}
+            />
+            <Button
+                type={"reset"}
+                handleClick={handleReset}
+                text={"Reset"}
+            />
         </div>
     );
 }

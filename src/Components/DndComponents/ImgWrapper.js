@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const ImgWrapper = () => {
+const ImgWrapper = ({ activeTargets }) => {
+
+    const [imgSrc, setImgSrc] = useState("")
+    useEffect(() => {
+        console.log(activeTargets)
+    }, [activeTargets])
+
     return (
         <div className="img-wrapper">
             <img
@@ -8,11 +14,14 @@ const ImgWrapper = () => {
                 alt=""
                 className="img-background"
             />
-            <img
-                src="./graphics/low1high1.jpg"
-                alt=""
-                className="img-overlay"
-            />
+            {imgSrc ? (
+                <img
+                    src={`./graphics/${imgSrc}.jpg`}
+                    alt=""
+                    className="img-overlay"
+                />
+            ) : null}
+
         </div>
     );
 }

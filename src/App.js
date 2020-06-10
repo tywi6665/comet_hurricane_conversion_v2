@@ -13,15 +13,10 @@ function App() {
 
   return (
     <Container>
-      <SubContainer>
-        <h1>
-          Aim a Hurricane
-        </h1>
-      </SubContainer>
-      <SubContainer>
+      <SubContainer classes="">
         <DndWrapper />
       </SubContainer>
-      <SubContainer>
+      {/* <SubContainer>
         <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
         <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
         <Modal
@@ -29,7 +24,7 @@ function App() {
           hide={e => toggle(e)}
           modalData={modalData}
         />
-      </SubContainer>
+      </SubContainer> */}
     </Container>
   );
 }

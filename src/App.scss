@@ -13,171 +13,211 @@ body {
     border-radius: 5px;
 
     .sub-container {
-        text-align: center;
         padding: 15px;
+    }        
 
-        h1 {
-            color: $primary-color;
-            text-shadow: 1px 1px 0px #000, 2px 2px 0px #000;;
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 15px 5px;
+            background: $primary-color;
+            color: #fff;
+            border: 2px solid $primary-color;
+            border-radius: 2.5em;
+            transition: 0.2s ease-in-out all;
+            width: auto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: left;
+            vertical-align: middle;
+
+            &:hover {
+                background-color: darken($color: $primary-color, $amount: 25%);
+                border-color: darken($color: $primary-color, $amount: 25%);
+            }
+        }
+
+        .btn[type="reset"] {
+            background-color: #555;
+            border-color: #555;
+
+            &:hover {
+                background-color: darken($color: #555, $amount: 15%);
+                border-color: darken($color: #555, $amount: 15%);
+            }
         }
 
         .dnd-wrapper {
-            border: 1px solid #000000;
+            background-color: #fff;
+            border: 1px solid #d5d5d5;
             border-radius: 5px;
             padding: 15px;
-            position: relative;
+            
 
-            .img-wrapper {
+            h1 {
+                text-align: center;
+                color: $primary-color;
+                text-shadow: 1px 1px 0px #000, 2px 2px 0px #000;
+            }
+
+            .dnd-inner-wrapper {
                 position: relative;
 
-                .img-background {
-                    display: block;
+                .img-wrapper {
+                    position: relative;
+                    width: 800px;
+
+                    .img-background {
+                        display: block;
+                    }
+
+                    .img-background, .img-overlay {
+                        width: 100%;
+                        height: auto;                    
+                    }
+
+                    .img-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
                 }
 
-                .img-background, .img-overlay {
-                    width: 100%;
-                    height: height;                    
-                }
-
-                .img-overlay {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-            }
-
-            .drag-n-drop {
-                width: fit-content;     
-                
-                .dnd-group {
-                    border: 1px solid #000000;
-                    border-radius: 5px;   
+                .drag-n-drop {
+                    width: fit-content;     
                     
-                    p.low {
-                        color: red;
-                        font-size: 30px;
-                        font-weight: bold;
-                    }
-
-                    p.high {
-                        color: blue;
-                        font-size: 30px;
-                        font-weight: bold;
-                    }
-                }
-
-                .dnd-draggables-container {
-                    height: 110px;
-                    width: 190px;
-                    display: flex;
-                    justify-content: space-evenly;
-                    padding: 15px;
-                    text-align: left;   
-
-                    .dnd-item {
-                        margin: 5px;
-                        padding: 5px;
-                        border: 1px solid #000000;
-                        border-radius: 5px;
-                        cursor: move; /* fallback if grab cursor is unsupported */
-                        cursor: grab;
-                        cursor: -moz-grab;
-                        cursor: -webkit-grab;
-
-                        &:active {
-                            cursor: grabbing;
-                            cursor: -moz-grabbing;
-                            cursor: -webkit-grabbing;
+                    .dnd-group {
+                        border: 1px solid #d5d5d5;
+                        border-radius: 5px;   
+                        
+                        p.low {
+                            color: red;
+                            font-size: 30px;
+                            font-weight: bold;
                         }
-                    }                          
 
-                    .active-item {
-                        visibility: hidden;
-                    }
-                } 
-
-                .active[data-value="low"] {
-                    border: 2px red solid;
-                }
-
-                .active[data-value="high"] {
-                    border: 2px blue solid;
-                }
-
-                .active[data-value="hurricane"] {
-                    border: 2px green solid;
-                }
-                
-                .dnd-target {
-                    position: absolute;
-                    width: 70px;
-                    height: 70px;
-
-                    &-low-1 {
-                        top: 165px;
-                        left: 192px;
+                        p.high {
+                            color: blue;
+                            font-size: 30px;
+                            font-weight: bold;
+                        }
                     }
 
-                    &-low-2 {
-                        top: 255px;
-                        left: 192px;
+                    .dnd-draggables-container {
+                        height: 110px;
+                        width: 190px;
+                        display: flex;
+                        justify-content: space-evenly;
+                        padding: 15px;
+                        text-align: left;   
+
+                        .dnd-item {
+                            margin: 5px;
+                            padding: 5px;
+                            border: 1px solid #000000;
+                            border-radius: 5px;
+                            cursor: move; /* fallback if grab cursor is unsupported */
+                            cursor: grab;
+                            cursor: -moz-grab;
+                            cursor: -webkit-grab;
+
+                            &:active {
+                                cursor: grabbing;
+                                cursor: -moz-grabbing;
+                                cursor: -webkit-grabbing;
+                            }
+                        }                          
+
+                        .active-item {
+                            visibility: hidden;
+                        }
+                    } 
+
+                    .active[data-value="low"] {
+                        border: 2px red solid;
                     }
 
-                    &-low-3 {
-                        top: 165px;
-                        left: 324px;
+                    .active[data-value="high"] {
+                        border: 2px blue solid;
                     }
 
-                    &-low-4 {
-                        top: 255px;
-                        left: 324px;
+                    .active[data-value="hurricane"] {
+                        border: 2px green solid;
                     }
+                    
+                    .dnd-target {
+                        position: absolute;
+                        border-color: #000000;
+                        width: 70px;
+                        height: 70px;
 
-                    &-high-1 {
-                        top: 205px;
-                        left: 455px;
-                    }
+                        &-low-1 {
+                            top: 165px;
+                            left: 192px;
+                        }
 
-                    &-high-2 {
-                        top: 295px;
-                        left: 455px;
-                    }
+                        &-low-2 {
+                            top: 255px;
+                            left: 192px;
+                        }
 
-                    &-high-3 {
-                        top: 205px;
-                        left: 542px;
-                    }
+                        &-low-3 {
+                            top: 165px;
+                            left: 324px;
+                        }
 
-                    &-high-4 {
-                        top: 295px;
-                        left: 542px;
-                    }
+                        &-low-4 {
+                            top: 255px;
+                            left: 324px;
+                        }
 
-                    &-hurricane-1 {
-                        bottom: 433px;
-                        right: 178px;
-                    }
+                        &-high-1 {
+                            top: 205px;
+                            left: 455px;
+                        }
 
-                    &-hurricane-2 {
-                        bottom: 362px;
-                        right: 178px;
+                        &-high-2 {
+                            top: 295px;
+                            left: 455px;
+                        }
+
+                        &-high-3 {
+                            top: 205px;
+                            left: 542px;
+                        }
+
+                        &-high-4 {
+                            top: 295px;
+                            left: 542px;
+                        }
+
+                        &-hurricane-1 {
+                            top: 433px;
+                            right: 178px;
+                        }
+
+                        &-hurricane-2 {
+                            top: 362px;
+                            right: 178px;
+                        }
                     }
                 }
             }
-        }
 
-        .button-default {
-            width: auto;
-            color: $primary-color;
-            text-decoration: underline;
-            font-weight: bold;
-            background-color: transparent;
-            border: none;
-            display: block;
-            cursor: pointer;
-            margin: 15px auto;
+            .button-default {
+                width: auto;
+                color: $primary-color;
+                text-decoration: underline;
+                font-weight: bold;
+                background-color: transparent;
+                border: none;
+                display: block;
+                cursor: pointer;
+                margin: 15px auto;
+            }
         }
-    }
+    
 }
 
 .modal-overlay {
@@ -223,19 +263,24 @@ body {
         }
 
         .modal-close-button {
-            width: auto;
-            padding: 9px;
-            color: #fff;
-            font-weight: bold;
-            background-color: $primary-color;
-            border: none;
-            border-radius: 25px;
             display: block;
-            cursor: pointer;
+            padding: 6px 12px;
             margin: 15px auto 0 auto;
+            color: #fff;
+            background-color: #555;
+            border: 2px solid #555;           
+            border-radius: 2.5em;
+            transition: 0.2s ease-in-out all;
+            width: auto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            vertical-align: middle;
 
             &:hover {
-                background-color: darken($color: $primary-color, $amount: 25%);
+                background-color: darken($color: #555, $amount: 25%);
+                border-color: darken($color: #555, $amount: 25%);
             }
         }
     }

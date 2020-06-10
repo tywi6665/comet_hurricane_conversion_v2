@@ -12,7 +12,7 @@ const Modal = ({ isShowing, hide, modalData }) => isShowing ? ReactDOM.createPor
                 <p>
                     {modalData.text}
                 </p>
-                <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" data="close" onClick={hide}>
+                <button type="button" className="btn modal-close-button" data-dismiss="modal" aria-label="Close" data="close" onClick={hide}>
                     <span aria-hidden="true" data="close" onClick={hide}>Close</span>
                 </button>
             </div>

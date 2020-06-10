@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Button from "./Button";
 import ImgWrapper from './ImgWrapper';
+import SubContainer from '../Containers/SubContainer';
+import Modal from "../Modal";
+import useModal from "../../utils/useModal";
 
 const DndWrapper = () => {
 
@@ -10,7 +13,7 @@ const DndWrapper = () => {
     const [dragData, setDragData] = useState([
         {
             title: "dnd-draggables-container",
-            items: [["L", "low"], ["H", "high"], ["Hurricane", "hurricane"]],
+            items: [["L", "low"], ["H", "high"], ["hurricane", "hurricane"]],
             accepts: "All",
             dataTarget: ""
         },
@@ -82,6 +85,8 @@ const DndWrapper = () => {
         hurricane: ""
     });
     const [initialDropDataCopy, setInitialDropDataCopy] = useState([]);
+    const { isShowing, toggle, modalData } = useModal();
+
     useEffect(() => {
         setInitialDragDataCopy(dragData);
         setInitialDropDataCopy(dropData);
@@ -167,35 +172,37 @@ const DndWrapper = () => {
 
     return (
         <div className="dnd-wrapper">
-            <ImgWrapper
-                activeTargets={dropData}
-            />
-            <div className="drag-n-drop">
-                {dragData.map((grp, grpI) => (
-                    <div
-                        className={`dnd-group ${grp.title}`}
-                        key={grp.title}
-                        data-value={grp.accepts}
-                        data-target={grp.dataTarget}
-                        onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
-                    >
-                        {grp.items.map((item, itemI) => (
-                            <div
-                                draggable
-                                className={dragging ? getItemStyles({ grpI, itemI }) : "dnd-item"}
-                                key={itemI}
-                                data={item[1]}
-                                onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
-                                onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
-                            >
-                                <div>
-                                    <p className={item[1]}>{item[0]}</p>
+            <h1>Aim a Hurricane</h1>
+            <SubContainer classes={"dnd-inner-wrapper"}>
+                <ImgWrapper
+                    activeTargets={dropData}
+                />
+                <div className="drag-n-drop">
+                    {dragData.map((grp, grpI) => (
+                        <div
+                            className={`dnd-group ${grp.title}`}
+                            key={grp.title}
+                            data-value={grp.accepts}
+                            data-target={grp.dataTarget}
+                            onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
+                        >
+                            {grp.items.map((item, itemI) => (
+                                <div
+                                    draggable
+                                    className={dragging ? getItemStyles({ grpI, itemI }) : "dnd-item"}
+                                    key={itemI}
+                                    data={item[1]}
+                                    onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
+                                    onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
+                                >
+                                    <div>
+                                        <p className={item[1]}>{item[0]}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                ))}
-                {/* {targetData.map((grp, grpI) => (
+                            ))}
+                        </div>
+                    ))}
+                    {/* {targetData.map((grp, grpI) => (
                     <div
                         className={`dnd-group dnd-target dnd-target-${grp.title}`}
                         key={grpI}
@@ -203,19 +210,29 @@ const DndWrapper = () => {
                     >
                     </div>
                 ))} */}
-            </div>
-            <Button
-                type={"submit"}
-                handleClick={handleSubmit}
-                text={"Submit"}
-                active={dropData}
-            />
-            <Button
-                type={"reset"}
-                handleClick={handleReset}
-                text={"Reset"}
-            />
-        </div>
+                </div>
+            </SubContainer>
+            <SubContainer classes="">
+                <Button
+                    type={"submit"}
+                    handleClick={handleSubmit}
+                    text={"Submit"}
+                    active={dropData}
+                />
+                <Button
+                    type={"reset"}
+                    handleClick={handleReset}
+                    text={"Reset"}
+                />
+                <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
+                <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
+                <Modal
+                    isShowing={isShowing}
+                    hide={e => toggle(e)}
+                    modalData={modalData}
+                />
+            </SubContainer>
+        </div >
     );
 }
 

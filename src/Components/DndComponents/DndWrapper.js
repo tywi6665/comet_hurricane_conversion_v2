@@ -95,7 +95,7 @@ const DndWrapper = () => {
     const handleDragEnter = (e, params) => {
         console.log("Entering drag...", params)
         const currentItem = dragItem.current;
-        if (e.target !== dragNode.current) {
+        if (e.target.getAttribute("data-value") === dragNode.current.getAttribute("data")) {
             setDragData(oldDragData => {
                 let newDragData = JSON.parse(JSON.stringify(oldDragData));
                 newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
@@ -103,6 +103,14 @@ const DndWrapper = () => {
                 return newDragData;
             })
         }
+        // if (e.target !== dragNode.current) {
+        //     setDragData(oldDragData => {
+        //         let newDragData = JSON.parse(JSON.stringify(oldDragData));
+        //         newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
+        //         dragItem.current = params;
+        //         return newDragData;
+        //     })
+        // }
     }
 
     const handleDragEnd = () => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Button from "./Button";
+import ImgWrapper from './ImgWrapper';
 
 const DndWrapper = () => {
 
@@ -165,10 +166,10 @@ const DndWrapper = () => {
     }
 
     return (
-        <div className="interaction-wrapper">
-            <div className="img-wrapper">
-                <img src="./graphics/sample.jpg" alt="" />
-            </div>
+        <div className="dnd-wrapper">
+            <ImgWrapper
+                activeTargets={dropData}
+            />
             <div className="drag-n-drop">
                 {dragData.map((grp, grpI) => (
                     <div
@@ -207,6 +208,7 @@ const DndWrapper = () => {
                 type={"submit"}
                 handleClick={handleSubmit}
                 text={"Submit"}
+                active={dropData}
             />
             <Button
                 type={"reset"}

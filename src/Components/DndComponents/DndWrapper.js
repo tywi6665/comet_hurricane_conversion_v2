@@ -10,63 +10,80 @@ const DndWrapper = () => {
         {
             title: "dnd-draggables-container",
             items: [["L", "low"], ["H", "high"], ["Hurricane", "hurricane"]],
-            accepts: "All"
+            accepts: "All",
+            dataTarget: ""
         },
         {
             title: "dnd-target dnd-target-low-1",
             items: [],
-            accepts: "low"
+            accepts: "low",
+            dataTarget: "low-1"
         },
         {
             title: "dnd-target dnd-target-low-2",
             items: [],
-            accepts: "low"
+            accepts: "low",
+            dataTarget: "low-2"
         },
         {
             title: "dnd-target dnd-target-low-3",
             items: [],
-            accepts: "low"
+            accepts: "low",
+            dataTarget: "low-3"
         },
         {
             title: "dnd-target dnd-target-low-4",
             items: [],
-            accepts: "low"
+            accepts: "low",
+            dataTarget: "low-4"
         },
         {
             title: "dnd-target dnd-target-high-1",
             items: [],
-            accepts: "high"
+            accepts: "high",
+            dataTarget: "high-1"
         },
         {
             title: "dnd-target dnd-target-high-2",
             items: [],
-            accepts: "high"
+            accepts: "high",
+            dataTarget: "high-2"
         },
         {
             title: "dnd-target dnd-target-high-3",
             items: [],
-            accepts: "high"
+            accepts: "high",
+            dataTarget: "high-3"
         },
         {
             title: "dnd-target dnd-target-high-4",
             items: [],
-            accepts: "high"
+            accepts: "high",
+            dataTarget: "high-4"
         },
         {
             title: "dnd-target dnd-target-hurricane-1",
             items: [],
-            accepts: "hurricane"
+            accepts: "hurricane",
+            dataTarget: "hurricane-1"
         },
         {
             title: "dnd-target dnd-target-hurricane-2",
             items: [],
-            accepts: "hurricane"
+            accepts: "hurricane",
+            dataTarget: "hurricane-2"
         }
     ]);
-    const [initialStateCopy, setInitialStateCopy] = useState([]);
-
+    const [initialDragDataCopy, setInitialDragDataCopy] = useState([]);
+    const [dropData, setDropData] = useState({
+        low: "",
+        high: "",
+        hurricane: ""
+    });
+    const [initialDropDataCopy, setInitialDropDataCopy] = useState([]);
     useEffect(() => {
-        setInitialStateCopy(dragData);
+        setInitialDragDataCopy(dragData);
+        setInitialDropDataCopy(dropData);
     }, []);
 
     const getItemStyles = (params) => {
@@ -100,15 +117,22 @@ const DndWrapper = () => {
     const handleDragEnter = (e, params) => {
         console.log("Entering drag...", params)
         const currentItem = dragItem.current;
-        if (dragNode.current)
-            if ((e.target.getAttribute("data-value") === dragNode.current.getAttribute("data")) || (e.target.getAttribute("data-value") === "All")) {
-                setDragData(oldDragData => {
-                    let newDragData = JSON.parse(JSON.stringify(oldDragData));
-                    newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
-                    dragItem.current = params;
-                    return newDragData;
-                })
-            }
+        if ((e.target.getAttribute("data-value") === dragNode.current.getAttribute("data")) || (e.target.getAttribute("data-value") === "All")) {
+            setDragData(oldDragData => {
+                let newDragData = JSON.parse(JSON.stringify(oldDragData));
+                newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
+                dragItem.current = params;
+                return newDragData;
+            })
+            setDropData({ ...dropData, [e.target.getAttribute("data-value")]: e.target.getAttribute("data-target") }
+
+
+                //     ...oldDropData => {
+                //     let dataValue = (e.target.getAttribute("data-target"));
+
+                // }
+            )
+        }
         // if (e.target !== dragNode.current) {
         //     setDragData(oldDragData => {
         //         let newDragData = JSON.parse(JSON.stringify(oldDragData));
@@ -136,7 +160,8 @@ const DndWrapper = () => {
     const handleReset = (e) => {
         console.log("reset")
         e.preventDefault()
-        setDragData(initialStateCopy);
+        setDragData(initialDragDataCopy);
+        setDropData(initialDropDataCopy);
     }
 
     return (
@@ -150,6 +175,7 @@ const DndWrapper = () => {
                         className={`dnd-group ${grp.title}`}
                         key={grp.title}
                         data-value={grp.accepts}
+                        data-target={grp.dataTarget}
                         onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
                     >
                         {grp.items.map((item, itemI) => (
@@ -162,7 +188,7 @@ const DndWrapper = () => {
                                 onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
                             >
                                 <div>
-                                    <p>{item[0]}</p>
+                                    <p className={item[1]}>{item[0]}</p>
                                 </div>
                             </div>
                         ))}

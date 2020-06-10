@@ -32,7 +32,19 @@ body {
                 
                 .dnd-group {
                     border: 1px solid #000000;
-                    border-radius: 5px;                   
+                    border-radius: 5px;   
+                    
+                    p.low {
+                        color: red;
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
+
+                    p.high {
+                        color: blue;
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
                 }
 
                 .dnd-draggables-container {
@@ -58,7 +70,7 @@ body {
                             cursor: -moz-grabbing;
                             cursor: -webkit-grabbing;
                         }
-                    }  
+                    }                          
 
                     .active-item {
                         visibility: hidden;

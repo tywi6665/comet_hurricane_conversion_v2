@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Button from "./Button";
 
 const DndWrapper = () => {
@@ -6,7 +6,6 @@ const DndWrapper = () => {
     const [dragging, setDragging] = useState(false);
     const dragItem = useRef();
     const dragNode = useRef();
-
     const [dragData, setDragData] = useState([
         {
             title: "dnd-draggables-container",
@@ -64,6 +63,11 @@ const DndWrapper = () => {
             accepts: "hurricane"
         }
     ]);
+    const [initialStateCopy, setInitialStateCopy] = useState([]);
+
+    useEffect(() => {
+        setInitialStateCopy(dragData);
+    }, []);
 
     const getItemStyles = (params) => {
         const currentItem = dragItem.current;
@@ -131,6 +135,8 @@ const DndWrapper = () => {
 
     const handleReset = (e) => {
         console.log("reset")
+        e.preventDefault()
+        setDragData(initialStateCopy);
     }
 
     return (

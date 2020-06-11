@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from "react-dom";
 
 const Modal = ({ isShowing, hide, modalData }) => isShowing ? ReactDOM.createPortal(

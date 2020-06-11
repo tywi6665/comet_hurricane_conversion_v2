@@ -176,33 +176,33 @@ const DndWrapper = () => {
             <SubContainer classes={"dnd-inner-wrapper"}>
                 <ImgWrapper
                     activeTargets={dropData}
-                />
-                <div className="drag-n-drop">
-                    {dragData.map((grp, grpI) => (
-                        <div
-                            className={`dnd-group ${grp.title}`}
-                            key={grp.title}
-                            data-value={grp.accepts}
-                            data-target={grp.dataTarget}
-                            onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
-                        >
-                            {grp.items.map((item, itemI) => (
-                                <div
-                                    draggable
-                                    className={dragging ? getItemStyles({ grpI, itemI }) : "dnd-item"}
-                                    key={itemI}
-                                    data={item[1]}
-                                    onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
-                                    onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
-                                >
-                                    <div>
-                                        <p className={item[1]}>{item[0]}</p>
+                >
+                    <div className="drag-n-drop">
+                        {dragData.map((grp, grpI) => (
+                            <div
+                                className={`dnd-group ${grp.title}`}
+                                key={grp.title}
+                                data-value={grp.accepts}
+                                data-target={grp.dataTarget}
+                                onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
+                            >
+                                {grp.items.map((item, itemI) => (
+                                    <div
+                                        draggable
+                                        className={dragging ? getItemStyles({ grpI, itemI }) : "dnd-item"}
+                                        key={itemI}
+                                        data={item[1]}
+                                        onDragStart={(e) => { handleDragStart(e, { grpI, itemI }) }}
+                                        onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
+                                    >
+                                        <div>
+                                            <p className={item[1]}>{item[0]}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
-                    {/* {targetData.map((grp, grpI) => (
+                                ))}
+                            </div>
+                        ))}
+                        {/* {targetData.map((grp, grpI) => (
                     <div
                         className={`dnd-group dnd-target dnd-target-${grp.title}`}
                         key={grpI}
@@ -210,7 +210,8 @@ const DndWrapper = () => {
                     >
                     </div>
                 ))} */}
-                </div>
+                    </div>
+                </ImgWrapper>
             </SubContainer>
             <SubContainer classes="info-box">
                 <div>

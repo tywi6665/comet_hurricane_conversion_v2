@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ImgWrapper = ({ activeTargets }) => {
+const ImgWrapper = ({ activeTargets, children }) => {
 
     const [imgSrc, setImgSrc] = useState("")
     useEffect(() => {
@@ -21,7 +21,7 @@ const ImgWrapper = ({ activeTargets }) => {
                     className="img-overlay"
                 />
             ) : null}
-
+            {children}
         </div>
     );
 }

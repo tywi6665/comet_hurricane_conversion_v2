@@ -171,6 +171,13 @@ const DndWrapper = () => {
         setDropData(initialDropDataCopy);
     }
 
+    const handleToggle = (e) => {
+        let checked = e.target
+        console.log(checked)
+        // e.target.attr("checked", !checked)
+        setIsToggled(!isToggled)
+    }
+
     return (
         <div className="dnd-wrapper">
             <h1>Aim a Hurricane</h1>
@@ -206,12 +213,13 @@ const DndWrapper = () => {
                         ))}
                     </div>
                     <div>
-                        <label class="switch">Wind Overlay
+                        <label className="switch">Wind Overlay
                             <input
                                 type="checkbox"
-                                onClick={e => setIsToggled(!isToggled)}
+                                defaultChecked={isToggled}
+                                onChange={e => setIsToggled(!isToggled)}
                             />
-                            <span class="slider"></span>
+                            <span className="slider"></span>
                         </label>
                     </div>
                     <div>

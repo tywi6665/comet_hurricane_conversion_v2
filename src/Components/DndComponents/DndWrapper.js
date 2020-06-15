@@ -86,6 +86,7 @@ const DndWrapper = () => {
     });
     const [initialDropDataCopy, setInitialDropDataCopy] = useState([]);
     const [isToggled, setIsToggled] = useState(true)
+    const [isSubmitted, setIsSubmitted] = useState(false)
     const { isShowing, toggle, modalData } = useModal();
 
     useEffect(() => {
@@ -160,22 +161,13 @@ const DndWrapper = () => {
         dragNode.current = null;
     }
 
-    const handleSubmit = (e) => {
-        console.log("submit")
-    }
-
     const handleReset = (e) => {
         console.log("reset")
         e.preventDefault()
         setDragData(initialDragDataCopy);
         setDropData(initialDropDataCopy);
-    }
-
-    const handleToggle = (e) => {
-        let checked = e.target
-        console.log(checked)
-        // e.target.attr("checked", !checked)
-        setIsToggled(!isToggled)
+        setIsSubmitted(false);
+        setIsToggled(true);
     }
 
     return (
@@ -185,6 +177,7 @@ const DndWrapper = () => {
                 <ImgWrapper
                     activeTargets={dropData}
                     isToggled={isToggled}
+                    isSubmitted={isSubmitted}
                 >
                     <div className="drag-n-drop">
                         {dragData.map((grp, grpI) => (
@@ -225,9 +218,9 @@ const DndWrapper = () => {
                     <div>
                         <Button
                             type={"submit"}
-                            handleClick={handleSubmit}
+                            handleClick={e => setIsSubmitted(!isSubmitted)}
                             text={"Submit"}
-                            active={dropData}
+                        // disabled={}
                         />
                         <Button
                             type={"reset"}

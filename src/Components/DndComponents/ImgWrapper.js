@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const ImgWrapper = ({ activeTargets, isToggled, children }) => {
+const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
 
-    const [imgSrc, setImgSrc] = useState("")
+    const [imgOverlaySrc, setImgOverlaySrc] = useState("")
+    const [gifOverlaySrc, setGifOverlaySrc] = useState("1h1s1")
     useEffect(() => {
         console.log(activeTargets)
-        setImgSrc(`${activeTargets.low}_${activeTargets.high}`)
-    }, [activeTargets])
+        setImgOverlaySrc(`${activeTargets.low}_${activeTargets.high}`)
+        setGifOverlaySrc(`${activeTargets.low}_${activeTargets.high}_${activeTargets.hurricane}`)
+    }, [activeTargets, isSubmitted])
 
     return (
         <div className="img-wrapper">
@@ -16,11 +18,23 @@ const ImgWrapper = ({ activeTargets, isToggled, children }) => {
                 className="img-background"
             />
             <img
-                src={`./graphics/${imgSrc}.png`}
+                src={`./graphics/${imgOverlaySrc}.png`}
                 alt=""
                 className="img-overlay"
-                style={imgSrc && isToggled && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
+                style={imgOverlaySrc && isToggled && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
             />
+            {gifOverlaySrc && isSubmitted ? (
+                <div className="animated-gif">
+                    <img
+                        src={`./graphics/${gifOverlaySrc}.gif`}
+                        alt=""
+
+                    />
+                </div>
+            ) : (
+                    null
+                )
+            }
             {children}
         </div>
     );

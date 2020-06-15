@@ -84,15 +84,18 @@ body {
                         display: block;
                     }
 
-                    .img-background, .img-overlay {
+                    .img-background, .img-overlay, .animated-gif {
                         width: 100%;
                         height: auto;                    
                     }
 
-                    .img-overlay {
+                    .img-overlay, .animated-gif {
                         position: absolute;
                         top: 0;
-                        left: 0;
+                        left: 0;                        
+                    }
+
+                    .img-overlay {
                         opacity: 50%;
                     }
 

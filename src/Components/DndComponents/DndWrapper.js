@@ -85,6 +85,7 @@ const DndWrapper = () => {
         hurricane: ""
     });
     const [initialDropDataCopy, setInitialDropDataCopy] = useState([]);
+    const [isToggled, setIsToggled] = useState(true)
     const { isShowing, toggle, modalData } = useModal();
 
     useEffect(() => {
@@ -176,6 +177,7 @@ const DndWrapper = () => {
             <SubContainer classes={"dnd-inner-wrapper"}>
                 <ImgWrapper
                     activeTargets={dropData}
+                    isToggled={isToggled}
                 >
                     <div className="drag-n-drop">
                         {dragData.map((grp, grpI) => (
@@ -202,6 +204,15 @@ const DndWrapper = () => {
                                 ))}
                             </div>
                         ))}
+                    </div>
+                    <div>
+                        <label class="switch">Wind Overlay
+                            <input
+                                type="checkbox"
+                                onClick={e => setIsToggled(!isToggled)}
+                            />
+                            <span class="slider"></span>
+                        </label>
                     </div>
                     <div>
                         <Button

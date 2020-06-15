@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ImgWrapper = ({ activeTargets, children }) => {
+const ImgWrapper = ({ activeTargets, isToggled, children }) => {
 
     const [imgSrc, setImgSrc] = useState("")
     useEffect(() => {
@@ -19,7 +19,7 @@ const ImgWrapper = ({ activeTargets, children }) => {
                 src={`./graphics/${imgSrc}.png`}
                 alt=""
                 className="img-overlay"
-                style={imgSrc && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
+                style={imgSrc && isToggled && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
             />
             {children}
         </div>

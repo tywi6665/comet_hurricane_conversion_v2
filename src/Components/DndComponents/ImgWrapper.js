@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
 
     const [imgOverlaySrc, setImgOverlaySrc] = useState("")
-    const [gifOverlaySrc, setGifOverlaySrc] = useState("1h1s1")
+    const [gifOverlaySrc, setGifOverlaySrc] = useState("")
     useEffect(() => {
         console.log(activeTargets)
         setImgOverlaySrc(`${activeTargets.low}_${activeTargets.high}`)
@@ -17,12 +17,14 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
                 alt=""
                 className="img-background"
             />
-            <img
-                src={`./graphics/${imgOverlaySrc}.png`}
-                alt=""
-                className="img-overlay"
-                style={imgOverlaySrc && isToggled && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
-            />
+            <div className="img-overlay-container">
+                <img
+                    src={`./graphics/${imgOverlaySrc}.png`}
+                    alt=""
+                    className="img-overlay"
+                    style={imgOverlaySrc && isToggled && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
+                />
+            </div>
             {gifOverlaySrc && isSubmitted ? (
                 <div className="animated-gif">
                     <img

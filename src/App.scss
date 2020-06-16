@@ -82,6 +82,7 @@ body {
 
                     .img-background {
                         display: block;
+                        
                     }
 
                     .img-background, .img-overlay, .animated-gif {
@@ -89,14 +90,16 @@ body {
                         height: auto;                    
                     }
 
-                    .img-overlay, .animated-gif {
+                    .img-overlay-container, .animated-gif {
+                        max-width: 77%;
                         position: absolute;
-                        top: 0;
-                        left: 0;                        
+                        top: 5%;
+                        left: 13%;                        
                     }
 
                     .img-overlay {
                         opacity: 50%;
+                        background-size: cover;
                     }
 
                     .drag-n-drop {

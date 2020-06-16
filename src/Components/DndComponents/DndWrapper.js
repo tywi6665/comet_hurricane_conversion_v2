@@ -161,9 +161,17 @@ const DndWrapper = () => {
         dragNode.current = null;
     }
 
+    const handleSubmit = (e) => {
+        document.getElementById("dnd-item-hurricane").style.display = "none";
+        document.querySelectorAll(".dnd-target").forEach(e =>
+            e.classList.add("is-animating"));
+        setIsSubmitted(!isSubmitted)
+    }
+
     const handleReset = (e) => {
-        console.log("reset")
         e.preventDefault()
+        document.querySelectorAll(".dnd-target").forEach(e =>
+            e.classList.remove("is-animating"));
         setDragData(initialDragDataCopy);
         setDropData(initialDropDataCopy);
         setIsSubmitted(false);
@@ -191,6 +199,7 @@ const DndWrapper = () => {
                                 {grp.items.map((item, itemI) => (
                                     <div
                                         draggable
+                                        id={`dnd-item-${item[1]}`}
                                         className={dragging ? getItemStyles({ grpI, itemI }) : "dnd-item"}
                                         key={itemI}
                                         data={item[1]}
@@ -209,9 +218,9 @@ const DndWrapper = () => {
                             </div>
                         ))}
                     </div>
-                    <div>
+                    <div style={dropData.low && dropData.high && dropData.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}>
                         <label className="switch">Wind Overlay
-                            <input
+                                <input
                                 type="checkbox"
                                 defaultChecked={isToggled}
                                 onChange={e => setIsToggled(!isToggled)}
@@ -222,7 +231,7 @@ const DndWrapper = () => {
                     <div>
                         <Button
                             type={"submit"}
-                            handleClick={e => setIsSubmitted(!isSubmitted)}
+                            handleClick={handleSubmit}
                             text={"Submit"}
                         // disabled={}
                         />

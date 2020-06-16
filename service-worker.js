@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/comet_hurricane_conversion_v2/precache-manifest.15e8134ece51cbb2f82bd1d5237407f3.js"
+  "/comet_hurricane_conversion_v2/precache-manifest.5b6ce815e2ae5765d5829e08e8167d27.js"
 );
 
 self.addEventListener('message', (event) => {

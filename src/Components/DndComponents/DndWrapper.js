@@ -198,7 +198,11 @@ const DndWrapper = () => {
                                         onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
                                     >
                                         <div>
-                                            <p className={item[1]}>{item[0]}</p>
+                                            <p
+                                                className={item[1]}
+                                                style={item[0] === "hurricane" ? { backgroundImage: "url(./graphics/hurricane_sprite_ani.gif)" } : null}>
+                                                {item[0] === "hurricane" ? null : item[0]}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}

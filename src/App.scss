@@ -92,9 +92,17 @@ body {
 
                     .img-overlay-container, .animated-gif {
                         max-width: 77%;
-                        position: absolute;
+                        position: absolute;                    
+                    }
+
+                    .img-overlay-container {
                         top: 5%;
-                        left: 13%;                        
+                        left: 13%;  
+                    }
+
+                    .animated-gif {
+                        top: 3%;
+                        left: 13%;  
                     }
 
                     .img-overlay {
@@ -103,7 +111,7 @@ body {
                     }
 
                     .drag-n-drop {
-                        width: fit-content;     
+                        width: fit-content;   
                         
                         .dnd-group {
                             border: 1px solid #d5d5d5;
@@ -124,15 +132,27 @@ body {
                                 font-size: 30px;
                                 font-weight: bold;
                             }
+
+                            p.hurricane {
+                                height: 45px; 
+                                width: 45px;
+                                background-position: center; 
+                                background-repeat: no-repeat; 
+                                background-size: cover;
+                            }
                         }
 
                         .dnd-draggables-container {
                             height: 56px;
                             width: 153px;
+                            background-color: #fff;
                             display: flex;
                             justify-content: space-evenly;
                             padding: 15px;
                             text-align: left;   
+                            // position: absolute;  
+                            // top: 0%;
+                            // left: 0%;
 
                             .dnd-item {
                                 height: fit-content;
@@ -217,59 +237,59 @@ body {
                             text-align: center;
 
                             &-low-1 {
-                                top: 9%;
-                                left: 16%;
+                                top: 12%;
+                                left: 22%;
                             }
 
                             &-low-2 {
-                                top: 20%;
-                                left: 16%;
+                                top: 22%;
+                                left: 22%;
                             }
 
                             &-low-3 {
-                                top: 9%;
-                                left: 34%;
+                                top: 12%;
+                                left: 36%;
                             }
 
                             &-low-4 {
-                                top: 20%;
-                                left: 34%;
+                                top: 22%;
+                                left: 36%;
                             }
 
                             &-high-1 {
-                                top: 14%;
-                                left: 53%;
+                                top: 17%;
+                                left: 52.5%;
                             }
 
                             &-high-2 {
-                                top: 25%;
-                                left: 53%;
+                                top: 28%;
+                                left: 52.5%;
                             }
 
                             &-high-3 {
-                                top: 14%;
-                                left: 65%;
+                                top: 17%;
+                                left: 63.5%;
                             }
 
                             &-high-4 {
-                                top: 25%;
-                                left: 65%;
+                                top: 28%;
+                                left: 63.5%;
                             }
 
                             &-hurricane-1 {
                                 width: 20px;
                                 height: 20px;
                                 border-radius: 50%;
-                                top: 33%;
-                                right: 13%;
+                                top: 35%;
+                                right: 19.4%;
                             }
 
                             &-hurricane-2 {
                                 width: 20px;
                                 height: 20px;
                                 border-radius: 50%;
-                                top: 39%;
-                                right: 13%;
+                                top: 40%;
+                                right: 19.4%;
                             }
                         }
                     }

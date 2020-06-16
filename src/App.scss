@@ -1,4 +1,5 @@
 $primary-color: #b9c6fb;
+$transition: 0.2s ease-in-out all;
 
 body {
     background: radial-gradient(ellipse at center, #7d7e7d 0%, #0e0e0e 100%) fixed;
@@ -27,7 +28,7 @@ body {
             color: #fff;
             border: 2px solid $primary-color;
             border-radius: 2.5em;
-            transition: 0.2s ease-in-out all;
+            transition: $transition;
             width: auto;
             font-size: 14px;
             font-weight: 400;
@@ -96,7 +97,7 @@ body {
                     }
 
                     .img-overlay-container {
-                        top: 5%;
+                        top: 6%;
                         left: 13%;  
                     }
 
@@ -111,7 +112,9 @@ body {
                     }
 
                     .drag-n-drop {
-                        width: fit-content;   
+                        width: 100%; 
+                        display: flex;
+                        justify-content: space-around;  
                         
                         .dnd-group {
                             border: 1px solid #d5d5d5;
@@ -140,6 +143,10 @@ body {
                                 background-repeat: no-repeat; 
                                 background-size: cover;
                             }
+                        }
+
+                        .button-box {
+                            text-align: center;
                         }
 
                         .dnd-draggables-container {
@@ -235,44 +242,45 @@ body {
                             width: 40px;
                             height: 40px;
                             text-align: center;
+                            transition: $transition;
 
                             &-low-1 {
-                                top: 12%;
+                                top: 15%;
                                 left: 22%;
                             }
 
                             &-low-2 {
-                                top: 22%;
+                                top: 29%;
                                 left: 22%;
                             }
 
                             &-low-3 {
-                                top: 12%;
+                                top: 15%;
                                 left: 36%;
                             }
 
                             &-low-4 {
-                                top: 22%;
+                                top: 29%;
                                 left: 36%;
                             }
 
                             &-high-1 {
-                                top: 17%;
+                                top: 21%;
                                 left: 52.5%;
                             }
 
                             &-high-2 {
-                                top: 28%;
+                                top: 33%;
                                 left: 52.5%;
                             }
 
                             &-high-3 {
-                                top: 17%;
+                                top: 21%;
                                 left: 63.5%;
                             }
 
                             &-high-4 {
-                                top: 28%;
+                                top: 33%;
                                 left: 63.5%;
                             }
 
@@ -280,7 +288,7 @@ body {
                                 width: 20px;
                                 height: 20px;
                                 border-radius: 50%;
-                                top: 35%;
+                                top: 42%;
                                 right: 19.4%;
                             }
 
@@ -288,13 +296,14 @@ body {
                                 width: 20px;
                                 height: 20px;
                                 border-radius: 50%;
-                                top: 40%;
+                                top: 49%;
                                 right: 19.4%;
                             }
                         }
 
                         .is-animating {
                             border: none;
+                            transition: $transition;
                         }
                     }
                 }
@@ -368,7 +377,7 @@ body {
             background-color: #555;
             border: 2px solid #555;           
             border-radius: 2.5em;
-            transition: 0.2s ease-in-out all;
+            transition: $transition;
             width: auto;
             font-size: 14px;
             font-weight: 400;

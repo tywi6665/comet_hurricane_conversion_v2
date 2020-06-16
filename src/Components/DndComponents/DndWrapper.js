@@ -182,6 +182,7 @@ const DndWrapper = () => {
         <div className="dnd-wrapper">
             <h1>Aim a Hurricane</h1>
             <SubContainer classes={"dnd-inner-wrapper"}>
+
                 <ImgWrapper
                     activeTargets={dropData}
                     isToggled={isToggled}
@@ -217,44 +218,43 @@ const DndWrapper = () => {
                                 ))}
                             </div>
                         ))}
-                    </div>
-                    <div style={dropData.low && dropData.high && dropData.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}>
-                        <label className="switch">Wind Overlay
+                        <div className="button-box">
+                            <div style={dropData.low && dropData.high && dropData.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}>
+                                <label className="switch">Wind Overlay
                                 <input
-                                type="checkbox"
-                                defaultChecked={isToggled}
-                                onChange={e => setIsToggled(!isToggled)}
+                                        type="checkbox"
+                                        defaultChecked={isToggled}
+                                        onChange={e => setIsToggled(!isToggled)}
+                                    />
+                                    <span className="slider"></span>
+                                </label>
+                            </div>
+                            <Button
+                                type={"submit"}
+                                handleClick={handleSubmit}
+                                text={"Submit"}
+                            // disabled={}
                             />
-                            <span className="slider"></span>
-                        </label>
-                    </div>
-                    <div>
-                        <Button
-                            type={"submit"}
-                            handleClick={handleSubmit}
-                            text={"Submit"}
-                        // disabled={}
-                        />
-                        <Button
-                            type={"reset"}
-                            handleClick={handleReset}
-                            text={"Reset"}
-                        />
+                            <Button
+                                type={"reset"}
+                                handleClick={handleReset}
+                                text={"Reset"}
+                            />
+                        </div>
                     </div>
                 </ImgWrapper>
-                <div className="info-box">
-                    <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
-                    <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
-                    <Modal
-                        isShowing={isShowing}
-                        hide={e => toggle(e)}
-                        modalData={modalData}
-                    />
-                </div>
+                <SubContainer>
+                    <div className="info-box">
+                        <button className="button-default directions-button" onClick={e => toggle(e)} data="directions">How to Aim a Hurricane</button>
+                        <button className="button-default credit-button" onClick={e => toggle(e)} data="credits">Credits</button>
+                        <Modal
+                            isShowing={isShowing}
+                            hide={e => toggle(e)}
+                            modalData={modalData}
+                        />
+                    </div>
+                </SubContainer>
             </SubContainer>
-            {/* <SubContainer classes="info-box"> */}
-
-            {/* </SubContainer> */}
         </div >
     );
 }

@@ -9,7 +9,7 @@ function App() {
 
   return (
     <Container>
-      <SubContainer classes="">
+      <SubContainer>
         <DndWrapper />
       </SubContainer>
     </Container>

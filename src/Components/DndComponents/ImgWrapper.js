@@ -22,7 +22,7 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
                     src={`./graphics/${imgOverlaySrc}.png`}
                     alt=""
                     className="img-overlay"
-                    style={imgOverlaySrc && isToggled && activeTargets.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}
+                    style={imgOverlaySrc && isToggled && activeTargets.hurricane ? { visibility: "visible", opacity: "50%" } : { visibility: "hidden" }}
                 />
             </div>
             {gifOverlaySrc && isSubmitted ? (

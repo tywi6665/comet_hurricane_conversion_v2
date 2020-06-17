@@ -219,11 +219,12 @@ const DndWrapper = () => {
                             </div>
                         ))}
                         <div className="button-box">
-                            <div style={dropData.low && dropData.high && dropData.hurricane ? { visibility: "visible" } : { visibility: "hidden" }}>
+                            <div style={dropData.low && dropData.high && dropData.hurricane ? { visibility: "visible", zIndex: 10 } : { visibility: "hidden" }}>
                                 <label className="switch">Wind Overlay
                                 <input
                                         type="checkbox"
                                         defaultChecked={isToggled}
+                                        onClick={e => console.log("click")}
                                         onChange={e => setIsToggled(!isToggled)}
                                     />
                                     <span className="slider"></span>

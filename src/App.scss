@@ -23,7 +23,7 @@ body {
         .btn {
             display: inline-block;
             padding: 6px 12px;
-            margin: 15px 5px;
+            margin: 8px 5px;
             background: $primary-color;
             color: #fff;
             border: 2px solid $primary-color;
@@ -99,6 +99,7 @@ body {
                     .img-overlay-container {
                         top: 6%;
                         left: 13%;  
+                        background-size: cover;
                     }
 
                     .animated-gif {
@@ -106,10 +107,10 @@ body {
                         left: 13%;  
                     }
 
-                    .img-overlay {
-                        opacity: 50%;
-                        background-size: cover;
-                    }
+                    // .img-overlay {
+                    //     opacity: 50%;
+                    //     background-size: cover;
+                    // }
 
                     .drag-n-drop {
                         width: 100%; 
@@ -147,14 +148,16 @@ body {
 
                         .button-box {
                             text-align: center;
+                            margin-top: 10px;
                         }
 
                         .dnd-draggables-container {
-                            height: 56px;
+                            height: 40px;
                             width: 153px;
                             background-color: #fff;
                             display: flex;
                             justify-content: space-evenly;
+                            align-items: center;
                             padding: 15px;
                             text-align: left;   
                             // position: absolute;  
@@ -165,8 +168,6 @@ body {
                                 height: fit-content;
                                 margin: 5px;
                                 padding: 2px;
-                                border: 1px solid #000000;
-                                border-radius: 5px;
                                 cursor: move; /* fallback if grab cursor is unsupported */
                                 cursor: grab;
                                 cursor: -moz-grab;

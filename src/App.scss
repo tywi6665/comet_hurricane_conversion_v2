@@ -219,9 +219,14 @@ body {
                             }
                         }
 
-                        .active[data-value="hurricane"] {
-                            border: 2px green solid;
+                        .dnd-target[data-value="hurricane"] {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
 
+                        .active[data-value="hurricane"] {
+                            border: 2px green solid;                            
                             animation: pulse_green 3s infinite; 
 
                             @keyframes pulse_green {

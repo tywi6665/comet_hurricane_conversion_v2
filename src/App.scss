@@ -36,7 +36,13 @@ body {
             text-align: left;
             vertical-align: middle;
 
-            &:hover {
+            &:disabled {
+                border-color: lightgrey;
+                background-color: lightgrey;
+
+            }
+
+            &:enabled:hover {
                 background-color: darken($color: $primary-color, $amount: 25%);
                 border-color: darken($color: $primary-color, $amount: 25%);
             }
@@ -46,7 +52,13 @@ body {
             background-color: #555;
             border-color: #555;
 
-            &:hover {
+            &:disabled {
+                border-color: lightgrey;
+                background-color: lightgrey;
+
+            }
+
+            &enabled:hover {
                 background-color: darken($color: #555, $amount: 15%);
                 border-color: darken($color: #555, $amount: 15%);
             }

@@ -238,12 +238,13 @@ const DndWrapper = () => {
                                 type={"submit"}
                                 handleClick={handleSubmit}
                                 text={"Submit"}
-                            // disabled={}
+                                data={dropData}
                             />
                             <Button
                                 type={"reset"}
                                 handleClick={handleReset}
                                 text={"Reset"}
+                                data={dropData}
                             />
                         </div>
                     </div>

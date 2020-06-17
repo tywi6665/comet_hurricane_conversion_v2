@@ -116,6 +116,7 @@ body {
                         width: 100%; 
                         display: flex;
                         justify-content: space-around;  
+                        align-items: center;
                         
                         .dnd-group {
                             border: 1px solid #d5d5d5;
@@ -149,6 +150,11 @@ body {
                         .button-box {
                             text-align: center;
                             margin-top: 10px;
+
+                           .switch-input {
+                               margin-right: 5px;
+                               cursor: pointer;
+                           }
                         }
 
                         .dnd-draggables-container {
@@ -186,15 +192,15 @@ body {
                         } 
 
                         .active[data-value="low"] {
-                            border: 2px red solid;
-                            animation: pulse_red 3s infinite; 
+                            border: 1px red solid;
+                            animation: pulse_red 2s infinite; 
 
                             @keyframes pulse_red {
                                 0% {
                                     border-color: red;
                                 } 
                                 50% {
-                                    border-color: lighten($color: red, $amount: 35%);
+                                    border-color: lighten($color: red, $amount: 30%);
                                 }
                                 100% {
                                     border-color: red;
@@ -203,15 +209,15 @@ body {
                         }
 
                         .active[data-value="high"] {
-                            border: 2px blue solid;
-                            animation: pulse_blue 3s infinite; 
+                            border: 1px blue solid;
+                            animation: pulse_blue 2s infinite; 
 
                             @keyframes pulse_blue{
                                 0% {
                                     border-color: blue;
                                 } 
                                 50% {
-                                    border-color: lighten($color: blue, $amount: 35%);
+                                    border-color: lighten($color: blue, $amount: 30%);
                                 }
                                 100% {
                                     border-color: blue;
@@ -226,15 +232,15 @@ body {
                         }
 
                         .active[data-value="hurricane"] {
-                            border: 2px green solid;                            
-                            animation: pulse_green 3s infinite; 
+                            border: 1px green solid;                            
+                            animation: pulse_green 2s infinite; 
 
                             @keyframes pulse_green {
                                 0% {
                                     border-color: green;
                                 } 
                                 50% {
-                                    border-color: lighten($color: green, $amount: 35%);
+                                    border-color: lighten($color: green, $amount: 30%);
                                 }
                                 100% {
                                     border-color: green;

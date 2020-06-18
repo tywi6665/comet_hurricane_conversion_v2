@@ -210,10 +210,10 @@ const DndWrapper = () => {
                                         type="checkbox"
                                         id="switch-input"
                                         className="switch-input"
-                                        defaultChecked={isToggled}
+                                        checked={isToggled}
                                         onChange={e => setIsToggled(!isToggled)}
                                     />
-                                    Wind Overlay
+                                 Wind Overlay
                                 </label>
                             </div>
                             <Button

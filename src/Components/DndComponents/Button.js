@@ -6,7 +6,7 @@ const Button = ({ type, handleClick, text, data }) => {
             className="btn"
             type={type}
             onClick={(e) => handleClick(e)}
-            disabled={data.low && data.high && data.hurricane ? false : true}
+            disabled={type === "reset" ? (data.low || data.high || data.hurricane ? false : true) : (data.low && data.high && data.hurricane ? false : true)}
         >
             {text}
         </button>

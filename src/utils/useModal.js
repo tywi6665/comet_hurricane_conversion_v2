@@ -10,7 +10,7 @@ const useModal = () => {
         if (element === "directions") {
             setModalData({
                 heading: "How to Aim a Hurricane",
-                text: "Click and drag the red low (L) onto a low target over the United States, the blue high (H) onto a high target over the Atlantic Ocean, and the animated hurricane onto either starting location target over the Atlantic Ocean. When all three are positioned, a Start button will appear at left. Click it to see the storm track for that combination."
+                text: "Click and drag the red low (L) onto a low target over the United States, the blue high (H) onto a high target over the Atlantic Ocean, and the animated hurricane onto either starting location target over the Atlantic Ocean. When all three are positioned, the Start button will turn blue. Click it to see the storm track for that combination. Click on the Reset button to return the draggable items back to the starting bin."
             });
             setIsShowing(!isShowing);
         } else if (element === "credits") {

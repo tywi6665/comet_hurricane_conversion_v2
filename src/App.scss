@@ -76,9 +76,13 @@ body {
             padding: 15px;
 
             div[draggable="true"] {
-                /*
-               To prevent user selecting inside the drag source
-              */
+                height: fit-content;
+                margin: 5px;
+                padding: 2px;
+                z-index: 10;
+                border: 1px solid transparent;
+                border-radius: 50%;
+                transition: 0.01s ease-in-out all;;
                 user-select: none;
                 -moz-user-select: none;
                 -webkit-user-select: none;
@@ -92,6 +96,10 @@ body {
                     cursor: grabbing;
                     cursor: -moz-grabbing;
                     cursor: -webkit-grabbing;
+                    background-color: transparent;
+                    border: 1px solid transparent;
+                    border-radius: 50%;
+                    opacity: 99%;
                 }
             }            
 
@@ -207,11 +215,12 @@ body {
                             // left: 0%;
 
                             .dnd-item {
-                                height: fit-content;
-                                margin: 5px;
-                                padding: 2px;
-                                z-index: 10;
-                                
+                                // height: fit-content;
+                                // margin: 5px;
+                                // padding: 2px;
+                                // z-index: 10;
+                                // border: 1px solid transparent;
+                                // border-radius: 50%;
                             }                          
 
                             .active-item {

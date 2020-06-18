@@ -5,7 +5,6 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
     const [imgOverlaySrc, setImgOverlaySrc] = useState("")
     const [gifOverlaySrc, setGifOverlaySrc] = useState("")
     useEffect(() => {
-        console.log(activeTargets)
         setImgOverlaySrc(`${activeTargets.low}_${activeTargets.high}`)
         setGifOverlaySrc(`${activeTargets.low}_${activeTargets.high}_${activeTargets.hurricane}`)
     }, [activeTargets, isSubmitted])

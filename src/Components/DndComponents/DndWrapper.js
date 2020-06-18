@@ -109,7 +109,6 @@ const DndWrapper = () => {
     }
 
     const handleDragStart = (e, params) => {
-        console.log("drag starting...", params)
         dragItem.current = params;
         dragNode.current = e.target;
         dragNode.current.addEventListener("dragend", handleDragEnd)
@@ -123,7 +122,6 @@ const DndWrapper = () => {
     }
 
     const handleDragEnter = (e, params) => {
-        console.log("Entering drag...", params)
         const currentItem = dragItem.current;
         if ((e.target.getAttribute("data-value") === dragNode.current.getAttribute("data")) || (e.target.getAttribute("data-value") === "All")) {
             setDragData(oldDragData => {
@@ -133,26 +131,11 @@ const DndWrapper = () => {
                 return newDragData;
             })
             setDropData({ ...dropData, [e.target.getAttribute("data-value")]: e.target.getAttribute("data-target") }
-
-
-                //     ...oldDropData => {
-                //     let dataValue = (e.target.getAttribute("data-target"));
-
-                // }
             )
         }
-        // if (e.target !== dragNode.current) {
-        //     setDragData(oldDragData => {
-        //         let newDragData = JSON.parse(JSON.stringify(oldDragData));
-        //         newDragData[params.grpI].items.splice(params.itemI, 0, newDragData[currentItem.grpI].items.splice(currentItem.itemI, 1)[0]);
-        //         dragItem.current = params;
-        //         return newDragData;
-        //     })
-        // }
     }
 
     const handleDragEnd = () => {
-        console.log("Ending drag...")
         document.querySelectorAll(".active").forEach(e =>
             e.classList.remove("active"));
         setDragging(false)
@@ -182,7 +165,6 @@ const DndWrapper = () => {
         <div className="dnd-wrapper">
             <h1>Aim a Hurricane</h1>
             <SubContainer classes={"dnd-inner-wrapper"}>
-
                 <ImgWrapper
                     activeTargets={dropData}
                     isToggled={isToggled}

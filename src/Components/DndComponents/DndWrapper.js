@@ -132,13 +132,14 @@ const DndWrapper = () => {
             })
             setDropData({ ...dropData, [e.target.getAttribute("data-value")]: e.target.getAttribute("data-target") }
             )
+            setDragging(false)
         }
     }
 
     const handleDragEnd = () => {
         document.querySelectorAll(".active").forEach(e =>
             e.classList.remove("active"));
-        setDragging(false)
+        // setDragging(false)
         dragNode.current.removeEventListener("dragend", handleDragEnd)
         dragItem.current = null;
         dragNode.current = null;
@@ -192,6 +193,7 @@ const DndWrapper = () => {
                                         <div>
                                             <p
                                                 className={item[1]}
+                                                data={item[1]}
                                                 style={item[0] === "hurricane" ? { backgroundImage: "url(./graphics/hurricane_sprite_ani.gif)" } : null}>
                                                 {item[0] === "hurricane" ? null : item[0]}
                                             </p>

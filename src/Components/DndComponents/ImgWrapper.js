@@ -4,7 +4,10 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
 
     const [imgOverlaySrc, setImgOverlaySrc] = useState("")
     const [gifOverlaySrc, setGifOverlaySrc] = useState("")
+
     useEffect(() => {
+        setImgOverlaySrc("")
+        setGifOverlaySrc("")
         if (activeTargets.low && activeTargets.high) {
             setImgOverlaySrc(`./graphics/${activeTargets.low}_${activeTargets.high}.png`)
         }

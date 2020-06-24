@@ -132,7 +132,8 @@ body {
 
                     .img-background, .img-overlay, .animated-gif {
                         width: 100%;
-                        height: auto;                    
+                        height: auto;     
+                        transition: $transition;               
                     }
 
                     .img-overlay-container, .animated-gif {

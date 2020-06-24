@@ -5,8 +5,10 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
     const [imgOverlaySrc, setImgOverlaySrc] = useState("")
     const [gifOverlaySrc, setGifOverlaySrc] = useState("")
     useEffect(() => {
-        setImgOverlaySrc(`${activeTargets.low}_${activeTargets.high}`)
-        setGifOverlaySrc(`${activeTargets.low}_${activeTargets.high}_${activeTargets.hurricane}`)
+        if (activeTargets.low && activeTargets.high) {
+            setImgOverlaySrc(`./graphics/${activeTargets.low}_${activeTargets.high}.png`)
+        }
+        setGifOverlaySrc(`./graphics/${activeTargets.low}_${activeTargets.high}_${activeTargets.hurricane}.gif`)
     }, [activeTargets, isSubmitted])
 
     return (
@@ -18,7 +20,7 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
             />
             <div className="img-overlay-container">
                 <img
-                    src={`./graphics/${imgOverlaySrc}.png`}
+                    src={imgOverlaySrc}
                     alt=""
                     className="img-overlay"
                     style={imgOverlaySrc && isToggled && activeTargets.hurricane ? { visibility: "visible", opacity: "50%" } : { visibility: "hidden" }}
@@ -27,9 +29,8 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
             {gifOverlaySrc && isSubmitted ? (
                 <div className="animated-gif">
                     <img
-                        src={`./graphics/${gifOverlaySrc}.gif`}
+                        src={gifOverlaySrc}
                         alt=""
-
                     />
                 </div>
             ) : (

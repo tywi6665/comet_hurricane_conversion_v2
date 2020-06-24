@@ -127,7 +127,8 @@ body {
 
                     .img-background {
                         display: block;
-                        
+                        // max-width: 500px!important;
+                        // max-height: 337px!important;
                     }
 
                     .img-background, .img-overlay, .animated-gif {
@@ -332,8 +333,8 @@ body {
                         }
 
                         .is-animating {
-                            border: none;
-                            transition: $transition;
+                            border-color: transparent;
+                            transition: border-color 0.5s ease-in-out;
                         }
                     }
                 }

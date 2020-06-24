@@ -15,7 +15,7 @@ const DndWrapper = () => {
             title: "dnd-draggables-container",
             items: [["L", "low"], ["H", "high"], ["hurricane", "hurricane"]],
             accepts: "All",
-            dataTarget: "All"
+            dataTarget: ""
         },
         {
             title: "dnd-target dnd-target-low-1",
@@ -123,7 +123,6 @@ const DndWrapper = () => {
 
     const handleDragEnter = (e, params) => {
         const currentItem = dragItem.current;
-        console.log(currentItem, dragNode.current)
         if ((e.target.getAttribute("data-value") === dragNode.current.getAttribute("data"))) {
             setDragData(oldDragData => {
                 let newDragData = JSON.parse(JSON.stringify(oldDragData));
@@ -135,22 +134,15 @@ const DndWrapper = () => {
             )
             setDragging(false)
         }
-        //  else {
-        //     e.target.classList.remove("active-item")
-        //     // setDragging(false)
-        // }
     }
 
     const handleDragEnd = () => {
-        console.log("end")
         document.querySelectorAll(".active").forEach(e =>
             e.classList.remove("active"));
-        document.querySelectorAll(".active-item").forEach(e =>
-            e.classList.remove("active-item"));
-        // setDragging(false)
         dragNode.current.removeEventListener("dragend", handleDragEnd)
         dragItem.current = null;
         dragNode.current = null;
+        setDragging(false)
     }
 
     const handleSubmit = (e) => {

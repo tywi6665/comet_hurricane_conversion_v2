@@ -91,6 +91,7 @@ body {
                 cursor: grab;
                 cursor: -moz-grab;
                 cursor: -webkit-grab;
+                visibility: visible;
 
                 &:active {
                     cursor: grabbing;

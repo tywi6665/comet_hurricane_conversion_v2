@@ -9,15 +9,15 @@ const ImgWrapper = ({ activeTargets, isToggled, isSubmitted, children }) => {
         setImgOverlaySrc("")
         setGifOverlaySrc("")
         if (activeTargets.low && activeTargets.high) {
-            setImgOverlaySrc(`./graphics/${activeTargets.low}_${activeTargets.high}.png`)
+            setImgOverlaySrc(`./images/${activeTargets.low}_${activeTargets.high}.png`)
         }
-        setGifOverlaySrc(`./graphics/${activeTargets.low}_${activeTargets.high}_${activeTargets.hurricane}.gif`)
+        setGifOverlaySrc(`./images/${activeTargets.low}_${activeTargets.high}_${activeTargets.hurricane}.gif`)
     }, [activeTargets, isSubmitted])
 
     return (
         <div className="img-wrapper">
             <img
-                src="./graphics/movncane_base.jpg"
+                src="./images/movncane_base.jpg"
                 alt=""
                 className="img-background"
             />

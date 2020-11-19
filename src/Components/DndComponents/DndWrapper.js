@@ -85,8 +85,8 @@ const DndWrapper = () => {
         hurricane: ""
     });
     const [initialDropDataCopy, setInitialDropDataCopy] = useState([]);
-    const [isToggled, setIsToggled] = useState(true)
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isToggled, setIsToggled] = useState(true);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const { isShowing, toggle, modalData } = useModal();
 
     useEffect(() => {
@@ -136,6 +136,11 @@ const DndWrapper = () => {
         }
     }
 
+    const handleDragOver = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
     const handleDragEnd = () => {
         document.querySelectorAll(".active").forEach(e =>
             e.classList.remove("active"));
@@ -178,7 +183,9 @@ const DndWrapper = () => {
                                 key={grp.title}
                                 data-value={grp.accepts}
                                 data-target={grp.dataTarget}
-                                onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
+                                // onDragEnter={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
+                                onDragOver={(e) => handleDragOver(e)}
+                                onDrop={dragging && !grp.items.length ? (e) => { handleDragEnter(e, { grpI, itemI: 0 }) } : null}
                             >
                                 {grp.items.map((item, itemI) => (
                                     <div
@@ -194,7 +201,7 @@ const DndWrapper = () => {
                                             <p
                                                 className={item[1]}
                                                 data={item[1]}
-                                                style={item[0] === "hurricane" ? { backgroundImage: "url(./graphics/hurricane_sprite_ani.gif)" } : null}>
+                                                style={item[0] === "hurricane" ? { backgroundImage: "url(./images/hurricane_sprite_ani.gif)" } : null}>
                                                 {item[0] === "hurricane" ? null : item[0]}
                                             </p>
                                         </div>
@@ -221,7 +228,7 @@ const DndWrapper = () => {
                             <Button
                                 type={"submit"}
                                 handleClick={handleSubmit}
-                                text={"Submit"}
+                                text={"Start"}
                                 data={dropData}
                                 isSubmitted={isSubmitted}
                             />

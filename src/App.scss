@@ -18,346 +18,352 @@ body {
 
     .sub-container {
         padding: 15px;
-    }        
+    }
 
-        .btn {
-            cursor: pointer;
-            display: inline-block;
-            padding: 6px 12px;
-            margin: 8px 5px;
-            color: #fff;
-            border: 2px solid;
-            border-radius: 2.5em;
-            transition: $transition;
-            width: auto;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.42857143;
-            text-align: left;
-            vertical-align: middle;            
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 8px 5px;
+        color: #fff;
+        border: 2px solid;
+        border-radius: 2.5em;
+        transition: $transition;
+        width: auto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .btn[type="submit"] {
+        background-color: darken($color: $primary-color, $amount: 25%);
+        border-color: darken($color: $primary-color, $amount: 25%);
+
+        &:disabled {
+            border-color: lightgrey;
+            background-color: lightgrey;
+            cursor: initial;
         }
 
-        .btn[type="submit"] {
-            background-color: darken($color: $primary-color, $amount: 25%);
-            border-color: darken($color: $primary-color, $amount: 25%);
+        &:enabled:hover {
+            background-color: darken($color: $primary-color, $amount: 50%);
+            border-color: darken($color: $primary-color, $amount: 50%);
+        }
+    }
 
-            &:disabled {
-                border-color: lightgrey;
-                background-color: lightgrey;
-                cursor: initial;
-            }
+    .btn[type="reset"] {
+        background-color: #555;
+        border-color: #555;
 
-            &:enabled:hover {
-                background-color: darken($color: $primary-color, $amount: 50%);
-                border-color: darken($color: $primary-color, $amount: 50%);
-            }
+        &:disabled {
+            border-color: lightgrey;
+            background-color: lightgrey;
+            cursor: initial;
         }
 
-        .btn[type="reset"] {
-            background-color: #555;
-            border-color: #555;
-
-            &:disabled {
-                border-color: lightgrey;
-                background-color: lightgrey;
-                cursor: initial;
-            }
-
-            &:enabled:hover {
-                background-color: darken($color: #555, $amount: 15%);
-                border-color: darken($color: #555, $amount: 15%);
-            }
+        &:enabled:hover {
+            background-color: darken($color: #555, $amount: 15%);
+            border-color: darken($color: #555, $amount: 15%);
         }
+    }
 
-        .dnd-wrapper {
-            background-color: #fff;
-            border: 1px solid #d5d5d5;
-            border-radius: 5px;
-            padding: 15px;
+    .dnd-wrapper {
+        background-color: #fff;
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        padding: 15px;
 
-            div[draggable="true"] {
-                height: fit-content;
-                margin: 5px;
-                padding: 2px;
-                z-index: 10;
+        div[draggable="true"] {
+            height: fit-content;
+            margin: 5px;
+            padding: 2px;
+            z-index: 10;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            transition: 0.01s ease-in-out all;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            cursor: move; /* fallback if grab cursor is unsupported */
+            cursor: move;
+            cursor: -moz-move;
+            cursor: -webkit-move;
+            visibility: visible;
+
+            &:active {
+                cursor: move;
+                cursor: -moz-move;
+                cursor: -webkit-move;
+                background-color: transparent;
                 border: 1px solid transparent;
                 border-radius: 50%;
-                transition: 0.01s ease-in-out all;;
-                user-select: none;
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
-                cursor: move; /* fallback if grab cursor is unsupported */
-                cursor: grab;
-                cursor: -moz-grab;
-                cursor: -webkit-grab;
-                visibility: visible;
-
-                &:active {
-                    cursor: grabbing;
-                    cursor: -moz-grabbing;
-                    cursor: -webkit-grabbing;
-                    background-color: transparent;
-                    border: 1px solid transparent;
-                    border-radius: 50%;
-                    opacity: 99%;
-                }
-            }            
-
-            h1 {
-                margin: 0;
-                text-align: center;
-                color: $primary-color;
-                text-shadow: 1px 1px 0px #000, 2px 2px 0px #000;
+                opacity: 99%;
             }
+        }
 
-            .dnd-inner-wrapper {
-                width: fit-content;
+        h1 {
+            margin: 0;
+            text-align: center;
+            color: $primary-color;
+            text-shadow: 1px 1px 0px #000, 2px 2px 0px #000;
+        }
 
-                .img-wrapper {
-                    position: relative;
+        .dnd-inner-wrapper {
+            width: fit-content;
+
+            .img-wrapper {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: auto !important;
+                    max-width: 100% !important;
+                    height: auto !important;
+                    max-height: 100% !important;
+                }
+
+                .img-background {
+                    display: block;
+                    // max-width: 500px!important;
+                    // max-height: 337px!important;
+                }
+
+                .img-background,
+                .img-overlay,
+                .animated-gif {
                     width: 100%;
-                    height: 100%;
+                    height: auto;
+                    transition: $transition;
+                }
 
-                    img {
-                        width: auto!important;
-                        max-width: 100%!important;
-                        height: auto!important;
-                        max-height: 100%!important;
+                .img-overlay-container,
+                .animated-gif {
+                    max-width: 77%;
+                    position: absolute;
+                }
+
+                .img-overlay-container {
+                    top: 6%;
+                    left: 13%;
+                    background-size: cover;
+                }
+
+                .animated-gif {
+                    top: 3%;
+                    left: 10%;
+                }
+
+                .drag-n-drop {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    .dnd-group {
+                        border: 1px solid #d5d5d5;
+                        border-radius: 5px;
+
+                        p {
+                            margin: 0;
+                        }
+
+                        p.low {
+                            color: red;
+                            font-size: 30px;
+                            font-weight: bold;
+                        }
+
+                        p.high {
+                            color: blue;
+                            font-size: 30px;
+                            font-weight: bold;
+                        }
+
+                        p.hurricane {
+                            height: 45px;
+                            width: 45px;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
                     }
 
-                    .img-background {
-                        display: block;
-                        // max-width: 500px!important;
-                        // max-height: 337px!important;
+                    .button-box {
+                        text-align: center;
+                        margin-top: 10px;
+
+                        .switch-input {
+                            margin-right: 5px;
+                            cursor: pointer;
+                        }
                     }
 
-                    .img-background, .img-overlay, .animated-gif {
-                        width: 100%;
-                        height: auto;     
-                        transition: $transition;               
-                    }
-
-                    .img-overlay-container, .animated-gif {
-                        max-width: 77%;
-                        position: absolute;                    
-                    }
-
-                    .img-overlay-container {
-                        top: 6%;
-                        left: 13%;  
-                        background-size: cover;
-                    }
-
-                    .animated-gif {
-                        top: 3%;
-                        left: 13%;  
-                    }
-
-                    .drag-n-drop {
-                        width: 100%; 
+                    .dnd-draggables-container {
+                        height: 40px;
+                        width: 153px;
+                        background-color: #fff;
                         display: flex;
-                        justify-content: space-around;  
+                        justify-content: space-evenly;
                         align-items: center;
-                        
-                        .dnd-group {
-                            border: 1px solid #d5d5d5;
-                            border-radius: 5px;   
+                        padding: 15px;
+                        text-align: left;
 
-                            p {
-                                margin: 0;
-                            }
-                            
-                            p.low {
-                                color: red;
-                                font-size: 30px;
-                                font-weight: bold;
-                            }
+                        .active-item {
+                            visibility: hidden;
+                        }
+                    }
 
-                            p.high {
-                                color: blue;
-                                font-size: 30px;
-                                font-weight: bold;
-                            }
+                    .active[data-value="low"] {
+                        border: 1px red solid;
+                        animation: pulse_red 2s infinite;
 
-                            p.hurricane {
-                                height: 45px; 
-                                width: 45px;
-                                background-position: center; 
-                                background-repeat: no-repeat; 
-                                background-size: cover;
+                        // p {
+                        //     opacity: 0.5;
+                        // }
+
+                        @keyframes pulse_red {
+                            0% {
+                                border-color: red;
+                            }
+                            50% {
+                                border-color: lighten($color: red, $amount: 30%);
+                            }
+                            100% {
+                                border-color: red;
                             }
                         }
+                    }
 
-                        .button-box {
-                            text-align: center;
-                            margin-top: 10px;
+                    .active[data-value="high"] {
+                        border: 1px blue solid;
+                        animation: pulse_blue 2s infinite;
 
-                           .switch-input {
-                               margin-right: 5px;
-                               cursor: pointer;
-                           }
-                        }
-
-                        .dnd-draggables-container {
-                            height: 40px;
-                            width: 153px;
-                            background-color: #fff;
-                            display: flex;
-                            justify-content: space-evenly;
-                            align-items: center;
-                            padding: 15px;
-                            text-align: left;                         
-
-                            .active-item {
-                                visibility: hidden;
+                        @keyframes pulse_blue {
+                            0% {
+                                border-color: blue;
                             }
-
-                        } 
-
-                        .active[data-value="low"] {
-                            border: 1px red solid;
-                            animation: pulse_red 2s infinite; 
-
-                            @keyframes pulse_red {
-                                0% {
-                                    border-color: red;
-                                } 
-                                50% {
-                                    border-color: lighten($color: red, $amount: 30%);
-                                }
-                                100% {
-                                    border-color: red;
-                                }
+                            50% {
+                                border-color: lighten($color: blue, $amount: 30%);
+                            }
+                            100% {
+                                border-color: blue;
                             }
                         }
+                    }
 
-                        .active[data-value="high"] {
-                            border: 1px blue solid;
-                            animation: pulse_blue 2s infinite; 
+                    .active[data-value="hurricane"] {
+                        border: 1px green solid;
+                        animation: pulse_green 2s infinite;
 
-                            @keyframes pulse_blue{
-                                0% {
-                                    border-color: blue;
-                                } 
-                                50% {
-                                    border-color: lighten($color: blue, $amount: 30%);
-                                }
-                                100% {
-                                    border-color: blue;
-                                }
+                        @keyframes pulse_green {
+                            0% {
+                                border-color: green;
+                            }
+                            50% {
+                                border-color: lighten($color: green, $amount: 30%);
+                            }
+                            100% {
+                                border-color: green;
                             }
                         }
-                        
-                        .active[data-value="hurricane"] {
-                            border: 1px green solid;                            
-                            animation: pulse_green 2s infinite; 
+                    }
 
-                            @keyframes pulse_green {
-                                0% {
-                                    border-color: green;
-                                } 
-                                50% {
-                                    border-color: lighten($color: green, $amount: 30%);
-                                }
-                                100% {
-                                    border-color: green;
-                                }
-                            }
-                        }
-                        
-                        .dnd-target {
-                            position: absolute;
-                            border-color: #000000;
-                            width: 35px;
-                            height: 35px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            text-align: center;
-                            transition: $transition;
+                    .dnd-target {
+                        position: absolute;
+                        border-color: #000000;
+                        width: 35px;
+                        height: 35px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        transition: $transition;
 
-                            &-low-1 {
-                                top: 15%;
-                                left: 22%;
-                            }
-
-                            &-low-2 {
-                                top: 29%;
-                                left: 22%;
-                            }
-
-                            &-low-3 {
-                                top: 15%;
-                                left: 36%;
-                            }
-
-                            &-low-4 {
-                                top: 29%;
-                                left: 36%;
-                            }
-
-                            &-high-1 {
-                                top: 22%;
-                                left: 52.5%;
-                            }
-
-                            &-high-2 {
-                                top: 34%;
-                                left: 52.5%;
-                            }
-
-                            &-high-3 {
-                                top: 22%;
-                                left: 63.5%;
-                            }
-
-                            &-high-4 {
-                                top: 34%;
-                                left: 63.5%;
-                            }
-
-                            &-hurricane-1 {
-                                width: 20px;
-                                height: 20px;
-                                border-radius: 50%;
-                                top: 42%;
-                                right: 19.4%;
-                            }
-
-                            &-hurricane-2 {
-                                width: 20px;
-                                height: 20px;
-                                border-radius: 50%;
-                                top: 48%;
-                                right: 19.4%;
-                            }
+                        &-low-1 {
+                            top: 15%;
+                            left: 22%;
                         }
 
-                        .is-animating {
-                            border-color: transparent;
-                            transition: border-color 0.3s ease-in-out;
+                        &-low-2 {
+                            top: 29%;
+                            left: 22%;
                         }
+
+                        &-low-3 {
+                            top: 15%;
+                            left: 36%;
+                        }
+
+                        &-low-4 {
+                            top: 29%;
+                            left: 36%;
+                        }
+
+                        &-high-1 {
+                            top: 22%;
+                            left: 52.5%;
+                        }
+
+                        &-high-2 {
+                            top: 34%;
+                            left: 52.5%;
+                        }
+
+                        &-high-3 {
+                            top: 22%;
+                            left: 63.5%;
+                        }
+
+                        &-high-4 {
+                            top: 34%;
+                            left: 63.5%;
+                        }
+
+                        &-hurricane-1 {
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            top: 42%;
+                            right: 19.4%;
+                        }
+
+                        &-hurricane-2 {
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            top: 48%;
+                            right: 19.4%;
+                        }
+                    }
+
+                    .is-animating {
+                        border-color: transparent;
+                        transition: border-color 0.3s ease-in-out;
                     }
                 }
             }
+        }
 
-            .info-box {
-                text-align: left;
-            }
+        .info-box {
+            text-align: left;
+        }
 
-            .button-default {
-                width: auto;
-                color: $primary-color;
-                text-decoration: underline;
-                font-weight: bold;
-                background-color: transparent;
-                border: none;
-                display: block;
-                cursor: pointer;
-                margin: 0 auto 15px auto;
-            }
-        }    
+        .button-default {
+            width: auto;
+            color: $primary-color;
+            text-decoration: underline;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            display: block;
+            cursor: pointer;
+            margin: 0 auto 15px auto;
+        }
+    }
 }
 
 .modal-overlay {
@@ -368,7 +374,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #000;
-    opacity: .5;
+    opacity: 0.5;
 }
 
 .modal-wrapper {
@@ -399,7 +405,6 @@ body {
             h3 {
                 text-align: center;
             }
-            
         }
 
         .modal-close-button {
@@ -408,7 +413,7 @@ body {
             margin: 15px auto 0 auto;
             color: #fff;
             background-color: #555;
-            border: 2px solid #555;           
+            border: 2px solid #555;
             border-radius: 2.5em;
             transition: $transition;
             width: auto;
